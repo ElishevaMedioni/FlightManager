@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL
+namespace BE
 {
-    public class FlightsDB
+    public class Url
     {
-        public BE.Url DownloadUrls { get; set; }
+        public int UrlId { get; set; }
+        public string DownloadUrl { get; set; }
     }
 }

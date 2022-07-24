@@ -9,13 +9,9 @@ namespace DAL
     public interface IDAL
     {
         #region FlightInfoPartial
-        void AddFlightInfoPartialToDB(BE.FlightInfoPartial newFlightInfoPartial);
-        BE.FlightInfoPartial GetFlightInfoPartial(Func<BE.FlightInfoPartial, bool> predicate = null);
-
-        void UpdateFlightInfoPartial(BE.FlightInfoPartial updateFlightInfoPartial);
-
-        List<BE.FlightInfoPartial> GetAllFlightInfoPartial(Func<BE.FlightInfoPartial, bool> predicate = null);
+         Dictionary<string, List<BE.FlightInfoPartial>> GetCurrentFlights();
 
         #endregion FlightInfoPartial
+
     }
 }

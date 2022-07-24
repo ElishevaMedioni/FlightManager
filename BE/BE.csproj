@@ -43,7 +43,9 @@
   <ItemGroup>
     <Compile Include="FlighInfo.cs" />
     <Compile Include="FlightInfoPartial.cs" />
+    <Compile Include="HelperClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Url.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
