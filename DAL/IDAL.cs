@@ -9,7 +9,9 @@ namespace DAL
     public interface IDAL
     {
         #region FlightInfoPartial
-         Dictionary<string, List<BE.FlightInfoPartial>> GetCurrentFlights();
+        IEnumerable<BE.FlightInfoPartial> GetIncomingFlights();
+        IEnumerable<BE.FlightInfoPartial> GetOutgoingFlights();
+
 
         #endregion FlightInfoPartial
 
