@@ -13,7 +13,7 @@ namespace BLL
 
         Dictionary<string, IEnumerable<BE.FlightInfoPartial>> GetCurrentFlights();
 
-        Root GetFlightData(String Key);
+        FlightRoot GetFlightData(String Key);
 
 
         #endregion FlightInfoPartial

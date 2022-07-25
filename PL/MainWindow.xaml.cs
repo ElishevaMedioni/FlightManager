@@ -32,6 +32,8 @@ namespace PL
             InitializeComponent();
         }
 
+        string APIKey = "16e42275ad992efba2e0fd36ff522dc4";
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //load current
@@ -46,6 +48,7 @@ namespace PL
         {
             SelectedFlight = e.AddedItems[0] as BE.FlightInfoPartial; //dangerous code - works but need to change it
             UpdateFlight(SelectedFlight);
+
         }
 
         private void UpdateFlight(BE.FlightInfoPartial selected)
@@ -144,6 +147,8 @@ namespace PL
         //    UpdateFlight(SelectedFlight);
         //    Counter.Text = (Convert.ToInt32(Counter.Text) + 1).ToString();
         //}
+
+
 
     }
 }

@@ -90,7 +90,7 @@
         <StackPanel x:Name="DetailsPanel" Grid.Column="1" HorizontalAlignment="Left" Height="403"  Grid.Row="1" VerticalAlignment="Top" Width="201" Margin="10,36,0,0">
             <TextBlock Text="{Binding identification.callsign}"></TextBlock>
             <TextBlock Text="{Binding aircraft.registration}"></TextBlock>
-            <TextBlock Text="{Binding airline.name}"></TextBlock> 
+            <TextBlock Text="{Binding airline.name}"></TextBlock>
             <TextBlock Text="{Binding airport.origin.name}"></TextBlock>
             <TextBlock Text="{Binding airport.origin.position.country.name}"></TextBlock>
             <TextBlock Text="{Binding airport.destination.name}"></TextBlock>
@@ -102,4 +102,3 @@
 
     </Grid>
 </Window>
-

@@ -177,7 +177,7 @@ namespace BE
         public string city { get; set; }
     }
 
-    public class Root
+    public class FlightRoot
     {
         public Identification identification { get; set; }
         public Status status { get; set; }

@@ -33,11 +33,11 @@ namespace BLL
             return Result;
         }
        
-        public  Root GetFlightData(String Key)
+        public FlightRoot GetFlightData(String Key)
         {
 
             var CurrentUrl = FlightURL + Key;
-            Root CurrentFlight = null;
+            FlightRoot CurrentFlight = null;
 
             //MUST use try- catch
             using (var webClient = new System.Net.WebClient())
@@ -45,7 +45,7 @@ namespace BLL
                 var json = webClient.DownloadString(CurrentUrl);
                 try
                 {
-                    CurrentFlight = (Root)Newtonsoft.Json.JsonConvert.DeserializeObject(json, typeof(Root));
+                    CurrentFlight = (FlightRoot)Newtonsoft.Json.JsonConvert.DeserializeObject(json, typeof(FlightRoot));
                 }
                 catch (Exception e)
                 {
