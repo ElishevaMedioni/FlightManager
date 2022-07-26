@@ -27,13 +27,13 @@ namespace PL
     {
         IBL BL ;
         BE.FlightInfoPartial SelectedFlight = null;
+
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        string APIKey = "16e42275ad992efba2e0fd36ff522dc4";
-
+       
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //load current
@@ -130,6 +130,15 @@ namespace PL
 
 
         }
+
+        private void weather_Click(object sender, RoutedEventArgs e)
+        {
+            Window weatherTest = new weatherTest();
+            weatherTest.Show();
+
+        }
+
+
 
 
         //private void Button_Click_1(object sender, RoutedEventArgs e)
