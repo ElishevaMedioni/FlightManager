@@ -12,11 +12,12 @@
         <TextBox x:Name="latitude"  HorizontalAlignment="Left" Margin="137,97,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="longitude" HorizontalAlignment="Left" Margin="431,101,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
 
-        <StackPanel x:Name="DetailsPanel" Grid.Column="1" HorizontalAlignment="Left" Height="403"  Grid.Row="1" VerticalAlignment="Top" Width="201" Margin="10,36,0,0">
-            <TextBlock Text="{Binding Weather.main}"></TextBlock>
-            <TextBlock Text="{Binding Weather.description}"></TextBlock>
-            <TextBlock Text="{Binding Sys.sunset}"></TextBlock>
-            <TextBlock Text="{Binding Sys.sunrise}"></TextBlock>
+        <StackPanel x:Name="DetailsPanel" HorizontalAlignment="Left" Height="308" VerticalAlignment="Top" Width="202" Margin="96,132,0,0">
+            <TextBlock Text="{Binding weather[0].main}"></TextBlock>
+            <TextBlock Text="{Binding weather[0].description}"></TextBlock>
+            <TextBlock Text="{Binding sys.sunsetDate}"></TextBlock>
+            <TextBlock Text="{Binding sys.sunriseDate}"></TextBlock>
+            <TextBlock Text="{Binding wind.speed}"></TextBlock>
             <TextBlock Text="{Binding weatherMain.pressure}"></TextBlock>
 
 

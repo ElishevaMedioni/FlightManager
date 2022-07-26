@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using BE;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,7 @@ namespace PL
             InitializeComponent();
         }
         string APIKey = "16e42275ad992efba2e0fd36ff522dc4";
+        HelperClass Helper = new HelperClass();
 
         private void getWdata(object sender, RoutedEventArgs e)
         {
@@ -40,8 +42,11 @@ namespace PL
                 string urlweater = string.Format("https://api.openweathermap.org/data/2.5/weather?lat={0}&lon={1}&appid={2}",latitude.Text.ToString(),longitude.Text.ToString(),APIKey.ToString());
                 var json = web.DownloadString(urlweater);
                 BE.WeatherRoot Info = JsonConvert.DeserializeObject<BE.WeatherRoot>(json);
+                Info.sys.sunsetDate = Helper.GetTimeFromEpoch(Convert.ToDouble(Info.sys.sunset));
+                Info.sys.sunriseDate = Helper.GetTimeFromEpoch(Convert.ToDouble(Info.sys.sunrise));
 
                 DetailsPanel.DataContext = Info;
+                
 
             }
 

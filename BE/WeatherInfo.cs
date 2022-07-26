@@ -51,6 +51,8 @@ namespace BE
     {
         public int sunrise { get; set; }
         public int sunset { get; set; }
+        public DateTime sunriseDate { get; set; }
+        public DateTime sunsetDate { get; set; }
     }
 
     public class Weather
