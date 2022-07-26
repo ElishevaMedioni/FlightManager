@@ -9,7 +9,7 @@
         xmlns:converters="clr-namespace:PL.Converters"
         xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550" Width="1900">
+        Title="MainWindow" Height="550" Width="1213">
     <Window.Resources>
         <Style TargetType="m:Pushpin" x:Key="FromIsrael">
             <Setter Property="Template">
@@ -48,13 +48,13 @@
             <RowDefinition Height="469*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="222*"/>
-            <ColumnDefinition Width="221*"/>
-            <ColumnDefinition Width="1449*"/>
+            <ColumnDefinition Width="237*"/>
+            <ColumnDefinition Width="47*"/>
+            <ColumnDefinition Width="929*"/>
         </Grid.ColumnDefinitions>
 
         <Button Content="Read All" HorizontalAlignment="Left" Height="36" Margin="58,10,0,0" VerticalAlignment="Top" Width="89" Click="Button_Click" RenderTransformOrigin="0.322,1.237"/>
-        <ListBox ItemsSource="{Binding}" Name="OutFlightsListBox" HorizontalAlignment="Left" Height="112" Margin="30,235,0,0" VerticalAlignment="Top" Width="176" SelectionChanged="FlightsListBox_SelectionChanged" Grid.Row="1">
+        <ListBox ItemsSource="{Binding}" Name="OutFlightsListBox" HorizontalAlignment="Center" Height="112" Margin="0,235,0,0" VerticalAlignment="Top" Width="176" SelectionChanged="FlightsListBox_SelectionChanged" Grid.Row="1">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -65,8 +65,8 @@
         </ListBox>
 
 
-        <Label Content="Flight Details" HorizontalAlignment="Left" Margin="59,20,0,0" VerticalAlignment="Top" Grid.Column="1" Height="26" Width="79"/>
-        <ListBox ItemsSource="{Binding}" x:Name="InFlightsListBox" HorizontalAlignment="Left" Height="112" Margin="30,67,0,0" VerticalAlignment="Top" Width="176" SelectionChanged="FlightsListBox_SelectionChanged" Grid.Row="1">
+        <Label Content="Flight Details" HorizontalAlignment="Left" Margin="6,20,0,0" VerticalAlignment="Top" Grid.Column="2" Height="26" Width="79"/>
+        <ListBox ItemsSource="{Binding}" x:Name="InFlightsListBox" HorizontalAlignment="Center" Height="112" Margin="0,67,0,0" VerticalAlignment="Top" Width="176" SelectionChanged="FlightsListBox_SelectionChanged" Grid.Row="1">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -82,12 +82,12 @@
         -->
         <!-- get your own key from https://www.bingmapsportal.com/ -->
         <m:Map x:Name="myMap" CredentialsProvider="Am7ABZsl1hVs093AjZV82C3wxd-NCQ-KtBLpdtv4uB1UBvqIx7vcgN7Dw1A9RpQt"          
-               Center="32.000454,34.870743" ZoomLevel="5.0" AnimationLevel="None" Margin="22,48,10,10" Grid.Column="2" Grid.RowSpan="2" >
+               Center="32.000454,34.870743" ZoomLevel="5.0" AnimationLevel="None" Margin="260,48,23,10" Grid.Column="2" Grid.RowSpan="2" >
             <!-- <m:Pushpin Location="34.620574,34.34942"/>-->
         </m:Map>
         <!--<Button Content="Start Track" HorizontalAlignment="Left" Height="33" Margin="646,10,0,0" VerticalAlignment="Top" Width="126" Click="Button_Click_1" Grid.Column="2"/>-->
         <TextBox x:Name="Counter" HorizontalAlignment="Left" Margin="777,15,0,10" TextWrapping="Wrap" Text="1" Width="45" Grid.Column="2"/>
-        <StackPanel x:Name="DetailsPanel" Grid.Column="1" HorizontalAlignment="Left" Height="403"  Grid.Row="1" VerticalAlignment="Top" Width="201" Margin="10,36,0,0">
+        <StackPanel x:Name="DetailsPanel" Grid.Column="2" HorizontalAlignment="Left" Height="183"  Grid.Row="1" VerticalAlignment="Top" Width="201" Margin="29,34,0,0">
             <TextBlock Text="{Binding identification.callsign}"></TextBlock>
             <TextBlock Text="{Binding aircraft.registration}"></TextBlock>
             <TextBlock Text="{Binding airline.name}"></TextBlock>
@@ -98,8 +98,16 @@
             <TextBlock Text="{Binding status.text}"></TextBlock>
             <TextBlock Text="{Binding time.estimated.arrival,Converter={StaticResource TickConvert}}"></TextBlock>
         </StackPanel>
-        <Button x:Name="weather" Content="Button" HorizontalAlignment="Left" Margin="63,375,0,0" Grid.Row="1" VerticalAlignment="Top" Height="83" Width="112" Click="weather_Click"/>
-
+        <Button x:Name="weather" Content="Button" HorizontalAlignment="Center" Margin="0,375,0,0" Grid.Row="1" VerticalAlignment="Top" Height="83" Width="112" Click="weather_Click"/>
+        <StackPanel x:Name="WeatherPanel" Grid.Column="2" HorizontalAlignment="Left" Height="183"  Grid.Row="1" VerticalAlignment="Top" Width="201" Margin="10,275,0,0">
+            <TextBlock Text="{Binding weather[0].main}"></TextBlock>
+            <TextBlock Text="{Binding weather[0].description}"></TextBlock>
+            <TextBlock Text="{Binding sys.sunsetDate}"></TextBlock>
+            <TextBlock Text="{Binding sys.sunriseDate}"></TextBlock>
+            <TextBlock Text="{Binding weatherMain.temo}"></TextBlock>
+            <TextBlock Text="{Binding weatherMain.feel_like}"></TextBlock>
+            
+        </StackPanel>
 
     </Grid>
 </Window>

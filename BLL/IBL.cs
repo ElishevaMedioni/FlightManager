@@ -17,5 +17,10 @@ namespace BLL
 
 
         #endregion FlightInfoPartial
+
+        #region Weather
+        WeatherRoot GetWeatherWithLatLong(string latitude, string longitude);
+        
+        #endregion Weather
     }
 }

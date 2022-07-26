@@ -1,9 +1,11 @@
 ﻿using BE;
 using DAL;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,6 +14,8 @@ namespace BLL
     public class BLImp:IBL
     {
         private const string FlightURL = @"https://data-live.flightradar24.com/clickhandler/?version=1.5&flight=";
+        private const string APIKey = "16e42275ad992efba2e0fd36ff522dc4";
+        HelperClass Helper = new HelperClass();
 
         Dictionary<string, IEnumerable<BE.FlightInfoPartial>> Result = new Dictionary<string, IEnumerable<BE.FlightInfoPartial>>(); //Belongs to BL
         public IDAL dal { get; set; }
@@ -57,5 +61,31 @@ namespace BLL
 
 
         #endregion FlightInfoPartial
+
+        #region Weather
+        public WeatherRoot GetWeatherWithLatLong(string latitude, string longitude)
+        {
+            using (WebClient web = new WebClient())
+            {
+
+                string urlweater = string.Format("https://api.openweathermap.org/data/2.5/weather?lat={0}&lon={1}&appid={2}", latitude, longitude, APIKey);
+                WeatherRoot Info = null;
+                
+                try
+                {
+                    var json = web.DownloadString(urlweater);
+                    Info = JsonConvert.DeserializeObject<BE.WeatherRoot>(json);
+                    Info.sys.sunsetDate = Helper.GetTimeFromEpoch(Convert.ToDouble(Info.sys.sunset));
+                    Info.sys.sunriseDate = Helper.GetTimeFromEpoch(Convert.ToDouble(Info.sys.sunrise));
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine(e.Message);
+                }
+                
+                return Info;
+            }
+        }
+        #endregion Weather
     }
 }

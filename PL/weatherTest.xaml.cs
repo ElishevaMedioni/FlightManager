@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -39,13 +40,24 @@ namespace PL
         {
             using(WebClient web = new WebClient() )
             {
-                string urlweater = string.Format("https://api.openweathermap.org/data/2.5/weather?lat={0}&lon={1}&appid={2}",latitude.Text.ToString(),longitude.Text.ToString(),APIKey.ToString());
-                var json = web.DownloadString(urlweater);
-                BE.WeatherRoot Info = JsonConvert.DeserializeObject<BE.WeatherRoot>(json);
-                Info.sys.sunsetDate = Helper.GetTimeFromEpoch(Convert.ToDouble(Info.sys.sunset));
-                Info.sys.sunriseDate = Helper.GetTimeFromEpoch(Convert.ToDouble(Info.sys.sunrise));
 
-                DetailsPanel.DataContext = Info;
+                try
+                {
+                    string urlweater = string.Format("https://api.openweathermap.org/data/2.5/weather?lat={0}&lon={1}&appid={2}", latitude.Text.ToString(), longitude.Text.ToString(), APIKey.ToString());
+                    var json = web.DownloadString(urlweater);
+                    BE.WeatherRoot Info = JsonConvert.DeserializeObject<BE.WeatherRoot>(json);
+                    Info.sys.sunsetDate = Helper.GetTimeFromEpoch(Convert.ToDouble(Info.sys.sunset));
+                    Info.sys.sunriseDate = Helper.GetTimeFromEpoch(Convert.ToDouble(Info.sys.sunrise));
+
+                    DetailsPanel.DataContext = Info;
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine(e.Message);
+                }
+
+                
+                
                 
 
             }

@@ -48,6 +48,7 @@ namespace PL
         {
             SelectedFlight = e.AddedItems[0] as BE.FlightInfoPartial; //dangerous code - works but need to change it
             UpdateFlight(SelectedFlight);
+            UpdateWeather(SelectedFlight);
 
         }
 
@@ -139,7 +140,13 @@ namespace PL
         }
 
 
-
+        private void UpdateWeather(BE.FlightInfoPartial selected)
+        {
+            BL = new BLImp();
+            var Flight = BL.GetFlightData(selected.SourceId);
+            BE.WeatherRoot weatherRoot = BL.GetWeatherWithLatLong(Flight.airport.destination.position.latitude.ToString(), Flight.airport.destination.position.longitude.ToString());
+            WeatherPanel.DataContext = weatherRoot;
+        }
 
         //private void Button_Click_1(object sender, RoutedEventArgs e)
         //{
