@@ -104,8 +104,8 @@
             <TextBlock Text="{Binding weather[0].description}"></TextBlock>
             <TextBlock Text="{Binding sys.sunsetDate}"></TextBlock>
             <TextBlock Text="{Binding sys.sunriseDate}"></TextBlock>
-            <TextBlock Text="{Binding weatherMain.temo}"></TextBlock>
-            <TextBlock Text="{Binding weatherMain.feel_like}"></TextBlock>
+            <TextBlock Text="{Binding main.temp}"></TextBlock>
+            <TextBlock Text="{Binding main.feels_like}"></TextBlock>
             
         </StackPanel>
 

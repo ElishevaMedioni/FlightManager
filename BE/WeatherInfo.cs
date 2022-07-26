@@ -18,7 +18,7 @@ namespace BE
         public double lat { get; set; }
     }
 
-    public class WeatherMain
+    public class Main
     {
         public double temp { get; set; }
         public double feels_like { get; set; }
@@ -26,8 +26,6 @@ namespace BE
         public double temp_max { get; set; }
         public int pressure { get; set; }
         public int humidity { get; set; }
-        public int sea_level { get; set; }
-        public int grnd_level { get; set; }
     }
 
     public class WeatherRoot
@@ -35,7 +33,7 @@ namespace BE
         public Coord coord { get; set; }
         public List<Weather> weather { get; set; }
         public string @base { get; set; }
-        public WeatherMain weatherMain { get; set; }
+        public Main main { get; set; }
         public int visibility { get; set; }
         public Wind wind { get; set; }
         public Clouds clouds { get; set; }

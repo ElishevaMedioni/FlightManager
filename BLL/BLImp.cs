@@ -77,6 +77,10 @@ namespace BLL
                     Info = JsonConvert.DeserializeObject<BE.WeatherRoot>(json);
                     Info.sys.sunsetDate = Helper.GetTimeFromEpoch(Convert.ToDouble(Info.sys.sunset));
                     Info.sys.sunriseDate = Helper.GetTimeFromEpoch(Convert.ToDouble(Info.sys.sunrise));
+                    Info.main.temp = Helper.GetTemp(Convert.ToDouble(Info.main.temp));
+                    Info.main.feels_like = Helper.GetTemp(Convert.ToDouble(Info.main.feels_like));
+                    Info.main.temp_min = Helper.GetTemp(Convert.ToDouble(Info.main.temp_min));
+                    Info.main.temp_max = Helper.GetTemp(Convert.ToDouble(Info.main.temp_max));
                 }
                 catch (Exception e)
                 {

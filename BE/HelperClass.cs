@@ -15,5 +15,10 @@ namespace BE
             start = start.AddSeconds(EpochTimeStamp);//add the seconds to the start DateTime
             return start;
         }
+        public double GetTemp(double kelvin)
+        {
+            double cel = kelvin -273.15;
+            return cel;
+        }
     }
 }
