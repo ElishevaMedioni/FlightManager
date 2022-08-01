@@ -20,7 +20,12 @@ namespace BLL
 
         #region Weather
         WeatherRoot GetWeatherWithLatLong(string latitude, string longitude);
-        
+
         #endregion Weather
+
+        #region date
+        bool Getholiday(DateTime today);
+
+        #endregion date
     }
 }

@@ -9,6 +9,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace BLL
 {
     public class BLImp:IBL
@@ -90,6 +91,33 @@ namespace BLL
                 return Info;
             }
         }
-        #endregion Weather
+
+
+        #endregion Weather 
+
+        #region date
+        public bool Getholiday(DateTime date)
+        {
+            using (var webClient = new System.Net.WebClient())
+            {
+                var yyyy = date.ToString("yyyy");
+                var mm = date.ToString("MM");
+                var dd = date.ToString("dd");
+                string urldate = string.Format("https://www.hebcal.com/converter?cfg=json&date={0}-{1}-{2}&g2h=1&strict=1", yyyy, mm, dd);
+
+
+                var json = webClient.DownloadString(urldate);
+                Root Data = JsonConvert.DeserializeObject<Root>(json);
+                Data.events.ForEach(Console.WriteLine);
+                var matchingvalues = Data.events.FirstOrDefault(stringToCheck => stringToCheck.Contains("Erev"));
+
+                if (matchingvalues != null)
+                    return true;
+                else return false;
+            }
+        }
+
+        #endregion date
+       
     }
 }

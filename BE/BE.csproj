@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DateInfo.cs" />
     <Compile Include="FlighInfo.cs" />
     <Compile Include="FlightInfoPartial.cs" />
     <Compile Include="HelperClass.cs" />

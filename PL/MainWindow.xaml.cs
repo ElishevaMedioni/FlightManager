@@ -28,6 +28,7 @@ namespace PL
         IBL BL ;
         BE.FlightInfoPartial SelectedFlight = null;
 
+
         public MainWindow()
         {
             InitializeComponent();
@@ -42,6 +43,7 @@ namespace PL
 
             InFlightsListBox.DataContext = FlightKeys["Incoming"];
             OutFlightsListBox.DataContext = FlightKeys["Outgoing"];
+            dateHoliday();
         }
 
         private void FlightsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -108,7 +110,6 @@ namespace PL
         }
 
 
-
         void addNewPolyLine(List<BE.Trail> Route)
         {
             //new version of MapPolyline -- different fields -- need to adapt
@@ -136,8 +137,11 @@ namespace PL
         {
             Window weatherTest = new weatherTest();
             weatherTest.Show();
+            //Window date = new date();
+            //date.Show();
 
         }
+
 
 
         private void UpdateWeather(BE.FlightInfoPartial selected)
@@ -146,6 +150,23 @@ namespace PL
             var Flight = BL.GetFlightData(selected.SourceId);
             BE.WeatherRoot weatherRoot = BL.GetWeatherWithLatLong(Flight.airport.destination.position.latitude.ToString(), Flight.airport.destination.position.longitude.ToString());
             WeatherPanel.DataContext = weatherRoot;
+        }
+
+        private void dateHoliday()
+        {
+            BL = new BLImp();
+            DateTime start = DateTime.Now;
+            bool flag = false;
+
+            for (int i = 0; i < 7; i++)
+            {
+                flag = BL.Getholiday(start.AddDays(i));
+                if (flag == true)
+                {
+                    date.Text = "There is a holiday this week ";
+                    i = 7;
+                }
+            }
         }
 
         //private void Button_Click_1(object sender, RoutedEventArgs e)
