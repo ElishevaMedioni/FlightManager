@@ -53,7 +53,7 @@
             <ColumnDefinition Width="929*"/>
         </Grid.ColumnDefinitions>
 
-        <Button Content="Read All" HorizontalAlignment="Left" Height="36" Margin="58,10,0,0" VerticalAlignment="Top" Width="89" Click="Button_Click" RenderTransformOrigin="0.322,1.237"/>
+        <!--<Button Content="Read All" HorizontalAlignment="Left" Height="36" Margin="58,10,0,0" VerticalAlignment="Top" Width="89" Click="Button_Click" RenderTransformOrigin="0.322,1.237"/>-->
         <ListBox ItemsSource="{Binding}" Name="OutFlightsListBox" HorizontalAlignment="Center" Height="112" Margin="0,235,0,0" VerticalAlignment="Top" Width="176" SelectionChanged="FlightsListBox_SelectionChanged" Grid.Row="1">
             <ListBox.ItemTemplate>
                 <DataTemplate>

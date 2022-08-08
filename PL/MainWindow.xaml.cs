@@ -32,19 +32,29 @@ namespace PL
         public MainWindow()
         {
             InitializeComponent();
+            BL = new BLImp();
+            getAllflight();
         }
-
-       
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void getAllflight()
         {
             //load current
-            BL = new BLImp();
             var FlightKeys = BL.GetCurrentFlights();
 
             InFlightsListBox.DataContext = FlightKeys["Incoming"];
             OutFlightsListBox.DataContext = FlightKeys["Outgoing"];
             dateHoliday();
         }
+
+        //private void Button_Click(object sender, RoutedEventArgs e)
+        //{
+        //    //load current
+        //    BL = new BLImp();
+        //    var FlightKeys = BL.GetCurrentFlights();
+
+        //    InFlightsListBox.DataContext = FlightKeys["Incoming"];
+        //    OutFlightsListBox.DataContext = FlightKeys["Outgoing"];
+        //    dateHoliday();
+        //}
 
         private void FlightsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -56,7 +66,7 @@ namespace PL
 
         private void UpdateFlight(BE.FlightInfoPartial selected)
         {
-            BL = new BLImp();
+         
             var Flight = BL.GetFlightData(selected.SourceId);
 
             DetailsPanel.DataContext = Flight;
@@ -138,7 +148,7 @@ namespace PL
 
         private void UpdateWeather(BE.FlightInfoPartial selected)
         {
-            BL = new BLImp();
+           
             var Flight = BL.GetFlightData(selected.SourceId);
 
             //some of the flight null
@@ -151,18 +161,17 @@ namespace PL
 
         private void dateHoliday()
         {
-            BL = new BLImp();
+        
             DateTime start = DateTime.Now;
-            bool flag = false;
-
-            for (int i = 0; i < 7; i++)
+            bool flag = BL.GetHoliday();
+            if (flag == true)
             {
-                flag = BL.GetHoliday(start.AddDays(i));
-                if (flag == true)
-                {
-                    date.Text = "There is a holiday this week ";
-                    i = 7;
-                }
+                date.Text = "There is a holiday this week ";
+            }
+            else
+            {
+                date.Text = "There is no holiday this week ";
+
             }
         }
 

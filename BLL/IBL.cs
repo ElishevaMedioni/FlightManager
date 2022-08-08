@@ -9,22 +9,22 @@ namespace BLL
 {
     public interface IBL
     {
-        #region FlightInfoPartial
+        #region Flight
 
         Dictionary<string, IEnumerable<BE.FlightInfoPartial>> GetCurrentFlights();
 
         FlightRoot GetFlightData(String Key);
 
 
-        #endregion FlightInfoPartial
+        #endregion Flight
 
         #region Weather
         WeatherRoot GetWeatherWithLatLong(string latitude, string longitude);
 
         #endregion Weather
 
-        #region date
-        bool GetHoliday(DateTime today);
+        #region Date
+        bool GetHoliday();
 
         #endregion date
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BE;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,12 +9,23 @@ namespace DAL
 {
     public interface IDAL
     {
-        #region FlightInfoPartial
+        #region Flight
         IEnumerable<BE.FlightInfoPartial> GetIncomingFlights();
         IEnumerable<BE.FlightInfoPartial> GetOutgoingFlights();
+       FlightRoot GetOneflight(string key);
 
 
-        #endregion FlightInfoPartial
+        #endregion Flight
+
+        #region Weather
+        BE.WeatherRoot GetOneflightWeather(string latitude, string longitude);
+        #endregion
+
+        #region Date
+        bool GetHoliday(DateTime dateTime);
+        #endregion
+
+
 
     }
 }

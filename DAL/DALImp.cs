@@ -12,6 +12,8 @@ namespace DAL
     public class DALImp : IDAL
     {
         public DALImp() { }
+
+        #region Flight
         IEnumerable<FlightInfoPartial> IDAL.GetIncomingFlights()
         {
             {
@@ -27,5 +29,30 @@ namespace DAL
                        select FlightInfoPartial.Clone();
             }
         }
+
+        public FlightRoot GetOneflight(string key)
+        {
+
+            return DataSource.GetFlightDataInit(key);
+        }
+
+        #endregion
+
+        #region Weather
+        public BE.WeatherRoot GetOneflightWeather(string latitude, string longitude)
+        {
+            return DataSource.GetWeatherData(latitude, longitude);
+        }
+        #endregion
+
+        #region Date
+        public bool GetHoliday(DateTime dateTime)
+        {
+            return DataSource.GetHolidayInit(dateTime);
+        }
+        #endregion
+
+
+
     }
 }
