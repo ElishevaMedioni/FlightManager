@@ -98,7 +98,6 @@
             <TextBlock Text="{Binding status.text}"></TextBlock>
             <TextBlock Text="{Binding time.estimated.arrival,Converter={StaticResource TickConvert}}"></TextBlock>
         </StackPanel>
-        <Button x:Name="weather" Content="Button" HorizontalAlignment="Center" Margin="0,409,0,0" Grid.Row="1" VerticalAlignment="Top" Height="49" Width="112" Click="weather_Click"/>
         <StackPanel x:Name="WeatherPanel" Grid.Column="2" HorizontalAlignment="Left" Height="183"  Grid.Row="1" VerticalAlignment="Top" Width="201" Margin="10,275,0,0">
             <TextBlock Text="{Binding weather[0].main}"></TextBlock>
             <TextBlock Text="{Binding weather[0].description}"></TextBlock>

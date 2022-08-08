@@ -133,14 +133,6 @@ namespace PL
 
         }
 
-        private void weather_Click(object sender, RoutedEventArgs e)
-        {
-            Window weatherTest = new weatherTest();
-            weatherTest.Show();
-            //Window date = new date();
-            //date.Show();
-
-        }
 
 
 
@@ -148,8 +140,13 @@ namespace PL
         {
             BL = new BLImp();
             var Flight = BL.GetFlightData(selected.SourceId);
-            BE.WeatherRoot weatherRoot = BL.GetWeatherWithLatLong(Flight.airport.destination.position.latitude.ToString(), Flight.airport.destination.position.longitude.ToString());
-            WeatherPanel.DataContext = weatherRoot;
+
+            //some of the flight null
+            if (Flight == null)
+            {
+                BE.WeatherRoot weatherRoot = BL.GetWeatherWithLatLong(Flight.airport.destination.position.latitude.ToString(), Flight.airport.destination.position.longitude.ToString());
+                WeatherPanel.DataContext = weatherRoot;
+            }
         }
 
         private void dateHoliday()
