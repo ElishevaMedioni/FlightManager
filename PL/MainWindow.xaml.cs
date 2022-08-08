@@ -142,7 +142,7 @@ namespace PL
             var Flight = BL.GetFlightData(selected.SourceId);
 
             //some of the flight null
-            if (Flight == null)
+            if (Flight != null)
             {
                 BE.WeatherRoot weatherRoot = BL.GetWeatherWithLatLong(Flight.airport.destination.position.latitude.ToString(), Flight.airport.destination.position.longitude.ToString());
                 WeatherPanel.DataContext = weatherRoot;
@@ -157,7 +157,7 @@ namespace PL
 
             for (int i = 0; i < 7; i++)
             {
-                flag = BL.Getholiday(start.AddDays(i));
+                flag = BL.GetHoliday(start.AddDays(i));
                 if (flag == true)
                 {
                     date.Text = "There is a holiday this week ";

@@ -24,7 +24,7 @@ namespace BLL
         #endregion Weather
 
         #region date
-        bool Getholiday(DateTime today);
+        bool GetHoliday(DateTime today);
 
         #endregion date
     }

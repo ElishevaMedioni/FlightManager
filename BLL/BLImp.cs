@@ -96,7 +96,7 @@ namespace BLL
         #endregion Weather 
 
         #region date
-        public bool Getholiday(DateTime date)
+        public bool GetHoliday(DateTime date)
         {
             using (var webClient = new System.Net.WebClient())
             {
