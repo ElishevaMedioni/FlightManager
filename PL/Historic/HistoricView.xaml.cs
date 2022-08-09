@@ -20,9 +20,13 @@ namespace PL.Historic
     /// </summary>
     public partial class HistoricView : UserControl
     {
+        public HistoricViewModel historicViewModel;
         public HistoricView()
         {
             InitializeComponent();
+            historicViewModel = new HistoricViewModel();
+            DataContext = historicViewModel;
+            FlightsHistoricList.ItemsSource = historicViewModel.GetFlightsHistoricByDate();
         }
     }
 }

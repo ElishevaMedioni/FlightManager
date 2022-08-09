@@ -17,6 +17,11 @@ namespace PL.Historic
             BL = new BLImp();
         }
 
+        public List<FlightInfoPartial> GetFlightsHistoric()
+        {
+            return BL.GetAllFlightInfoPartial(null);
+        }
+
         
     }
 }

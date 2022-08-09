@@ -108,6 +108,7 @@
 
         </StackPanel>
         <TextBox x:Name="date" HorizontalAlignment="Center" Margin="0,367,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="176" Height="17"/>
+        <Button x:Name="historicButton" Content="Button" HorizontalAlignment="Center" Margin="0,426,0,0" Grid.Row="1" VerticalAlignment="Top" Width="70" Click="historicButton_Click"/>
 
     </Grid>
 </Window>
