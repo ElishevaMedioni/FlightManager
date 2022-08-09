@@ -46,6 +46,7 @@ namespace BLL
 
         public bool ClearAllListFlights()
         {
+            Result.Clear();
             return dal.ClearAllFlights();
         }
 
