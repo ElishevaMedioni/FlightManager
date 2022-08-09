@@ -72,9 +72,18 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\Command.cs" />
+    <Compile Include="Historic\HistoricModel.cs" />
+    <Compile Include="Historic\HistoricView.xaml.cs">
+      <DependentUpon>HistoricView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Historic\HistoricViewModel.cs" />
     <Compile Include="weatherTest.xaml.cs">
       <DependentUpon>weatherTest.xaml</DependentUpon>
     </Compile>
+    <Page Include="Historic\HistoricView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
