@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,6 +34,7 @@ namespace BE
 
     public class Airport
     {
+       
         public Origin origin { get; set; }
         public Destination destination { get; set; }
         public object real { get; set; }
@@ -75,6 +78,7 @@ namespace BE
 
     public class FlightHistory
     {
+        
         public List<Aircraft> aircraft { get; set; }
     }
 
@@ -179,6 +183,7 @@ namespace BE
 
     public class FlightRoot
     {
+        
         public Identification identification { get; set; }
         public Status status { get; set; }
         public string level { get; set; }

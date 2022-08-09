@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
@@ -23,12 +24,16 @@ namespace DB
         public static List<BE.FlightInfoPartial> Incoming = new List<BE.FlightInfoPartial>();
         public static List<BE.FlightInfoPartial> Outgoing = new List<BE.FlightInfoPartial>();
 
+        
+
         //פונקצית אתחול לכל רשימה
         static DataSource()
         {
             OutgoingFlightsInit();
             IncomingFlightsInit();
         }
+
+
 
         #region Flight
         public static void OutgoingFlightsInit()

@@ -41,7 +41,17 @@ namespace BLL
         {
 
             
-            return dal.GetOneflight(Key);
+            return dal.GetCurrentflight(Key);
+        }
+        
+        public void SaveFlightToDB(BE.FlightInfoPartial Flight)
+        {
+            //if ((dal.GetFlight(x => x.identification.id == Flight.identification.id)) == null)
+            //{
+                
+                dal.AddFlightToHistoryDb(Flight);
+
+            //}
         }
 
         public bool ClearAllListFlights()

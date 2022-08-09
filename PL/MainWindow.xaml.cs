@@ -117,6 +117,7 @@ namespace PL
             SelectedFlight = e.AddedItems[0] as BE.FlightInfoPartial; //dangerous code - works but need to change it
             UpdateFlight(SelectedFlight);
             UpdateWeather(SelectedFlight);
+            BL.SaveFlightToDB(SelectedFlight);
 
         }
 
@@ -126,6 +127,7 @@ namespace PL
             var Flight = BL.GetFlightData(selected.SourceId);
 
             DetailsPanel.DataContext = Flight;
+            
 
             //update map
             if (Flight != null)
@@ -165,6 +167,7 @@ namespace PL
 
                 myMap.Children.Add(PinOrigin);
                 myMap.Children.Add(PinCurrent);
+
             }
         }
 

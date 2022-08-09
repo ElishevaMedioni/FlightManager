@@ -12,7 +12,7 @@ namespace DAL
         #region Flight
         IEnumerable<BE.FlightInfoPartial> GetIncomingFlights();
         IEnumerable<BE.FlightInfoPartial> GetOutgoingFlights();
-       FlightRoot GetOneflight(string key);
+       FlightRoot GetCurrentflight(string key);
 
         bool ClearAllFlights ();
 
@@ -27,7 +27,12 @@ namespace DAL
         bool GetHoliday(DateTime dateTime);
         #endregion
 
+        #region History
+        void AddFlightToHistoryDb(BE.FlightInfoPartial flight);
+        BE.FlightInfoPartial GetFlight(Func<BE.FlightInfoPartial, bool> predicate = null);
 
+
+        #endregion
 
     }
 }

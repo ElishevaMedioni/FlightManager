@@ -3,6 +3,7 @@ using DB;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations.History;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,7 +31,7 @@ namespace DAL
             }
         }
 
-        public FlightRoot GetOneflight(string key)
+        public FlightRoot GetCurrentflight(string key)
         {
 
             return DataSource.GetFlightDataInit(key);
@@ -58,8 +59,27 @@ namespace DAL
             return DataSource.GetHolidayInit(dateTime);
         }
         #endregion
+        
+        #region History
+        void IDAL.AddFlightToHistoryDb(BE.FlightInfoPartial flight)
+        {
+            using (var db = new HistoryDb())
+            {
+                db.HistoryFlights.Add(flight);
+                db.SaveChanges();
+            }
+        }
 
+        public BE.FlightInfoPartial GetFlight(Func<BE.FlightInfoPartial, bool> predicate = null)
+        {
+            using (var ctx = new HistoryDb())
+            {
+                return ctx.HistoryFlights.Where(predicate).FirstOrDefault();
 
+            }
+
+        }
+        #endregion
 
     }
 }

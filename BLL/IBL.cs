@@ -16,6 +16,7 @@ namespace BLL
         FlightRoot GetFlightData(String Key);
         bool ClearAllListFlights();
 
+        void SaveFlightToDB(BE.FlightInfoPartial Flight);
 
         #endregion Flight
 
@@ -23,10 +24,14 @@ namespace BLL
         WeatherRoot GetWeatherWithLatLong(string latitude, string longitude);
 
         #endregion Weather
-
+        
         #region Date
         bool GetHoliday();
 
         #endregion date
+
+        
+        
+        
     }
 }
