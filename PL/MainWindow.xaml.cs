@@ -219,6 +219,13 @@ namespace PL
             }
         }
 
+        private void myMap_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            BL.ClearAllListFlights();
+            getAllflight();
+
+        }
+
         //private void Button_Click_1(object sender, RoutedEventArgs e)
         //{
         //    DispatcherTimer dispatcherTimer = new DispatcherTimer();

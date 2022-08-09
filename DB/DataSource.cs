@@ -126,9 +126,10 @@ namespace DB
             //MUST use try- catch
             using (var webClient = new System.Net.WebClient())
             {
-                var json = webClient.DownloadString(CurrentUrl);
+                
                 try
                 {
+                    var json = webClient.DownloadString(CurrentUrl);
                     CurrentFlight = (FlightRoot)Newtonsoft.Json.JsonConvert.DeserializeObject(json, typeof(FlightRoot));
                 }
                 catch (Exception e)
