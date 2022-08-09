@@ -42,7 +42,50 @@ namespace PL
 
             InFlightsListBox.DataContext = FlightKeys["Incoming"];
             OutFlightsListBox.DataContext = FlightKeys["Outgoing"];
+            foreach (var Flight in FlightKeys["Incoming"])
+                PinCurrentFlight(Flight);
+            foreach (var Flight in FlightKeys["Outgoing"])
+                PinCurrentFlight(Flight);
             dateHoliday();
+        }
+        private void PinCurrentFlight(BE.FlightInfoPartial selected)
+        {
+
+            var Flight = BL.GetFlightData(selected.SourceId);
+
+
+            //update map
+            if (Flight != null)
+            {
+                List<BE.Trail> OrderedPlaces = (from f in Flight.trail
+                                                orderby f.ts
+                                                select f).ToList<BE.Trail>();
+
+                BE.Trail CurrentPlace = null;
+
+                Pushpin PinCurrent = new Pushpin { ToolTip = selected.FlightCode };
+
+                PositionOrigin origin = new PositionOrigin { X = 0.4, Y = 0.4 };
+
+                MapLayer.SetPositionOrigin(PinCurrent, origin);
+
+                if (Flight.airport.destination.code.iata == "TLV")
+                {
+                    PinCurrent.Style = (Style)Resources["ToIsrael"];
+                }
+                else
+                {
+                    PinCurrent.Style = (Style)Resources["FromIsrael"];
+                }
+
+                CurrentPlace = OrderedPlaces.Last<BE.Trail>();
+                var PlaneLocation = new Location { Latitude = CurrentPlace.lat, Longitude = CurrentPlace.lng };
+                PinCurrent.Location = PlaneLocation;
+
+                CurrentPlace = OrderedPlaces.First<BE.Trail>();
+                PlaneLocation = new Location { Latitude = CurrentPlace.lat, Longitude = CurrentPlace.lng };
+                myMap.Children.Add(PinCurrent);
+            }
         }
 
         //private void Button_Click(object sender, RoutedEventArgs e)
@@ -58,6 +101,7 @@ namespace PL
 
         private void FlightsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            myMap.Children.Clear();
             SelectedFlight = e.AddedItems[0] as BE.FlightInfoPartial; //dangerous code - works but need to change it
             UpdateFlight(SelectedFlight);
             UpdateWeather(SelectedFlight);

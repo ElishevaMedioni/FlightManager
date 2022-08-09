@@ -61,6 +61,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\Command.cs" />
     <Compile Include="weatherTest.xaml.cs">
       <DependentUpon>weatherTest.xaml</DependentUpon>
     </Compile>
@@ -123,5 +124,6 @@
     <Resource Include="Images\airplaneUpLeft.png" />
     <Resource Include="Images\airplaneUpRight.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
