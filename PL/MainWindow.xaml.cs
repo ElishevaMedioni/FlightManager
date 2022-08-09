@@ -27,6 +27,7 @@ namespace PL
     {
         IBL BL ;
         BE.FlightInfoPartial SelectedFlight = null;
+        Dictionary<string, IEnumerable<BE.FlightInfoPartial>> FlightKeys = null;
 
 
         public MainWindow()
@@ -38,7 +39,7 @@ namespace PL
         private void getAllflight()
         {
             //load current
-            var FlightKeys = BL.GetCurrentFlights();
+            FlightKeys = BL.GetCurrentFlights();
 
             InFlightsListBox.DataContext = FlightKeys["Incoming"];
             OutFlightsListBox.DataContext = FlightKeys["Outgoing"];
@@ -48,6 +49,17 @@ namespace PL
                 PinCurrentFlight(Flight);
             dateHoliday();
         }
+
+        private void ViewAllFlights()
+        {
+           
+            foreach (var Flight in FlightKeys["Incoming"])
+                PinCurrentFlight(Flight);
+            foreach (var Flight in FlightKeys["Outgoing"])
+                PinCurrentFlight(Flight);
+            dateHoliday();
+        }
+
         private void PinCurrentFlight(BE.FlightInfoPartial selected)
         {
 
@@ -221,8 +233,7 @@ namespace PL
 
         private void myMap_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            BL.ClearAllListFlights();
-            getAllflight();
+            ViewAllFlights();
 
         }
 
