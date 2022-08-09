@@ -14,6 +14,8 @@ namespace DAL
         IEnumerable<BE.FlightInfoPartial> GetOutgoingFlights();
        FlightRoot GetOneflight(string key);
 
+        bool ClearAllFlights ();
+
 
         #endregion Flight
 

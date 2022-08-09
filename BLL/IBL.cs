@@ -14,6 +14,7 @@ namespace BLL
         Dictionary<string, IEnumerable<BE.FlightInfoPartial>> GetCurrentFlights();
 
         FlightRoot GetFlightData(String Key);
+        bool ClearAllListFlights();
 
 
         #endregion Flight

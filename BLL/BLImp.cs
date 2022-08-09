@@ -44,6 +44,10 @@ namespace BLL
             return dal.GetOneflight(Key);
         }
 
+        public bool ClearAllListFlights()
+        {
+            return dal.ClearAllFlights();
+        }
 
         #endregion Flight
 

@@ -36,6 +36,13 @@ namespace DAL
             return DataSource.GetFlightDataInit(key);
         }
 
+        public bool ClearAllFlights()
+        {
+            DB.DataSource.Incoming.Clear();
+            DB.DataSource.Outgoing.Clear(); 
+            return true;
+        }
+
         #endregion
 
         #region Weather
