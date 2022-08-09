@@ -46,13 +46,16 @@ namespace BLL
         
         public void SaveFlightToDB(BE.FlightInfoPartial Flight)
         {
-            //if ((dal.GetFlight(x => x.identification.id == Flight.identification.id)) == null)
-            //{
-                
+            if ((dal.GetFlight(x => x.Id == Flight.Id)) == null)
+            {
+
                 dal.AddFlightToHistoryDb(Flight);
 
-            //}
+            }
         }
+
+        public List<FlightInfoPartial> GetAllFlightInfoPartial(Func<FlightInfoPartial, bool> predicate = null)
+            => dal.GetAllFlightfromDB(predicate);
 
         public bool ClearAllListFlights()
         {

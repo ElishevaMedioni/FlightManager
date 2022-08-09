@@ -31,6 +31,8 @@ namespace DAL
         void AddFlightToHistoryDb(BE.FlightInfoPartial flight);
         BE.FlightInfoPartial GetFlight(Func<BE.FlightInfoPartial, bool> predicate = null);
 
+        List<FlightInfoPartial> GetAllFlightfromDB(Func<FlightInfoPartial, bool> predicate = null);
+
 
         #endregion
 

@@ -79,6 +79,22 @@ namespace DAL
             }
 
         }
+
+        public List<FlightInfoPartial> GetAllFlightfromDB(Func<FlightInfoPartial, bool> predicate = null)
+        {
+            using (var ctx = new HistoryDb())
+            {
+                if (predicate == null)
+                {
+                    return ctx.HistoryFlights.ToList();
+                }
+                else
+                {
+
+                    return ctx.HistoryFlights.Where(predicate).ToList();
+                }
+            }
+        }
         #endregion
 
     }

@@ -18,6 +18,8 @@ namespace BLL
 
         void SaveFlightToDB(BE.FlightInfoPartial Flight);
 
+        List<FlightInfoPartial> GetAllFlightInfoPartial(Func<FlightInfoPartial, bool> predicate = null);
+
         #endregion Flight
 
         #region Weather
