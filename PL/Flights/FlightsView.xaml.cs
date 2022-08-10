@@ -108,8 +108,7 @@ namespace PL.Flights
 
         private void UpdateFlight(BE.FlightInfoPartial selected)
         {
-
-            var Flight = BL.GetFlightData(selected.SourceId);
+            var Flight = flightsViewModel.GetFlightDataViewModel(selected);
 
             DetailsPanel.DataContext = Flight;
 
@@ -154,6 +153,24 @@ namespace PL.Flights
                 myMap.Children.Add(PinCurrent);
 
             }
+        }
+
+        private void addNewPolyLine(List<BE.Trail> Route)
+        {
+            MapPolyline polyline = new MapPolyline();
+            //polyline.Fill = new System.Windows.Media.SolidColorBrush(Colors.Red);
+            polyline.Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Red);
+            polyline.StrokeThickness = 1;
+            polyline.Opacity = 0.7;
+            polyline.Locations = new LocationCollection();
+
+            foreach (var item in Route)
+            {
+                polyline.Locations.Add(new Location(item.lat, item.lng));
+            }
+
+            myMap.Children.Clear();
+            myMap.Children.Add(polyline);
         }
     }
 }
