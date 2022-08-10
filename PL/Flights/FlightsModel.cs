@@ -11,13 +11,18 @@ namespace PL.Flights
     public class FlightsModel
     {
         IBL BL;
+        
 
         public FlightsModel()
         {
             BL = new BLImp();
         }
+        private Dictionary<string, IEnumerable<BE.FlightInfoPartial>> getAllflight()
+        {
+            //load current
+           return BL.GetCurrentFlights();
 
-
-        
+         
+        }
     }
 }
