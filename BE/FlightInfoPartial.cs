@@ -20,5 +20,15 @@ namespace BE
         public string SourceFilter { get; set; }
         public string Destination { get; set; }
         public string FlightCode { get; set; }
+        public override string ToString()
+        {
+            return "id:"+Id.ToString()
+                +" SourceFilter: "+ SourceFilter.ToString()
+                +" Destination: "+ Destination.ToString()
+                + " DateAndTime: " + DateAndTime.ToString();
+
+        }
     }
+
+
 }
