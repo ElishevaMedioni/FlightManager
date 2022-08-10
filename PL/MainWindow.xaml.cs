@@ -246,6 +246,7 @@ namespace PL
         {
             historicView = new HistoricView();
             MainUC.Content = historicView;
+            
         }
 
         //private void Button_Click_1(object sender, RoutedEventArgs e)

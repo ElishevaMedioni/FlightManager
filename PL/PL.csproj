@@ -72,6 +72,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\Command.cs" />
+    <Compile Include="Flights\FlightsModel.cs" />
+    <Compile Include="Flights\FlightsView.xaml.cs">
+      <DependentUpon>FlightsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Flights\FlightsViewModel.cs" />
     <Compile Include="Historic\HistoricModel.cs" />
     <Compile Include="Historic\HistoricView.xaml.cs">
       <DependentUpon>HistoricView.xaml</DependentUpon>
@@ -80,6 +85,10 @@
     <Compile Include="weatherTest.xaml.cs">
       <DependentUpon>weatherTest.xaml</DependentUpon>
     </Compile>
+    <Page Include="Flights\FlightsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Historic\HistoricView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -28,5 +28,10 @@ namespace PL.Historic
             DataContext = historicViewModel;
             FlightsHistoricList.ItemsSource = historicViewModel.GetFlightsHistoricByDate();
         }
+
+        private void closeButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

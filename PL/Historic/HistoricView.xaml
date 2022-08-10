@@ -7,13 +7,17 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <ListView x:Name="FlightsHistoricList" ItemsSource="{Binding HistoricFlights}">
+        <ListView x:Name="FlightsHistoricList" Margin="10,10,144,0">
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>
                 </GridView>
             </ListView.View>
+
         </ListView>
+        <Button x:Name="closeButton" Content="X" HorizontalAlignment="Left" Margin="735,10,0,0" VerticalAlignment="Top" Height="30" Width="37" Click="closeButton_Click"/>
+
+
 
     </Grid>
 </UserControl>
