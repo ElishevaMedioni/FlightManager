@@ -30,6 +30,7 @@ namespace PL.Flights
             InitializeComponent();
             flightsViewModel = new FlightsViewModel();
             DataContext = flightsViewModel;
+            getAllflightToMap();
         }
 
         private void getAllflightToMap()
@@ -102,7 +103,7 @@ namespace PL.Flights
             BE.FlightInfoPartial SelectedFlight = null;
             SelectedFlight = e.AddedItems[0] as BE.FlightInfoPartial; //dangerous code - works but need to change it
             UpdateFlight(SelectedFlight);
-            //UpdateWeather(SelectedFlight);
+            UpdateWeather(SelectedFlight);
 
             flightsViewModel.SaveFlightToDBViewModel(SelectedFlight);
           
