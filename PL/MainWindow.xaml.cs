@@ -18,6 +18,7 @@ using Microsoft.Maps.MapControl.WPF;
 using System.Collections.ObjectModel;
 using BLL;
 using PL.Historic;
+using PL.Flights;
 
 namespace PL
 {
@@ -31,6 +32,7 @@ namespace PL
         Dictionary<string, IEnumerable<BE.FlightInfoPartial>> FlightKeys = null;
 
         private HistoricView historicView;
+        private FlightsView flightsView;
 
         public MainWindow()
         {
@@ -247,6 +249,11 @@ namespace PL
             historicView = new HistoricView();
             MainUC.Content = historicView;
             
+        }
+
+        private void FlightsButton_Click(object sender, RoutedEventArgs e)
+        {
+            flightsView = new FlightsView();
         }
 
         //private void Button_Click_1(object sender, RoutedEventArgs e)
