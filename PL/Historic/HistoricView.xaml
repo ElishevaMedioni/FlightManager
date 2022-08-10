@@ -15,7 +15,7 @@
             </ListView.View>
 
         </ListView>
-        <Button x:Name="closeButton" Content="X" HorizontalAlignment="Left" Margin="735,10,0,0" VerticalAlignment="Top" Height="30" Width="37" Click="closeButton_Click"/>
+       
 
 
 

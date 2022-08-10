@@ -17,7 +17,7 @@ namespace PL.Flights
 
         public Dictionary<string, IEnumerable<BE.FlightInfoPartial>> getAllFlightsViewModel()
         {
-            return FlightsModel.getAllflightModel();
+            return FlightsModel.GetAllFlightsModel();
         }
 
         public FlightRoot GetFlightDataViewModel(FlightInfoPartial flightInfoPartial)

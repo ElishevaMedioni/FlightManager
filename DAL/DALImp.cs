@@ -31,7 +31,7 @@ namespace DAL
             }
         }
 
-        public FlightRoot GetCurrentflight(string key)
+        public FlightRoot GetCurrentFlight(string key)
         {
 
             return DataSource.GetFlightDataInit(key);
@@ -47,7 +47,7 @@ namespace DAL
         #endregion
 
         #region Weather
-        public BE.WeatherRoot GetOneflightWeather(string latitude, string longitude)
+        public BE.WeatherRoot GetOneFlightWeather(string latitude, string longitude)
         {
             return DataSource.GetWeatherData(latitude, longitude);
         }
@@ -80,7 +80,7 @@ namespace DAL
 
         }
 
-        public List<FlightInfoPartial> GetAllFlightfromDB(Func<FlightInfoPartial, bool> predicate = null)
+        public List<FlightInfoPartial> GetAllFlightsFromDB(Func<FlightInfoPartial, bool> predicate = null)
         {
             using (var ctx = new HistoryDb())
             {

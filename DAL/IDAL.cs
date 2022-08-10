@@ -12,15 +12,13 @@ namespace DAL
         #region Flight
         IEnumerable<BE.FlightInfoPartial> GetIncomingFlights();
         IEnumerable<BE.FlightInfoPartial> GetOutgoingFlights();
-       FlightRoot GetCurrentflight(string key);
-
-        bool ClearAllFlights ();
-
+        FlightRoot GetCurrentFlight(string key);
+        bool ClearAllFlights();
 
         #endregion Flight
 
         #region Weather
-        BE.WeatherRoot GetOneflightWeather(string latitude, string longitude);
+        BE.WeatherRoot GetOneFlightWeather(string latitude, string longitude);
         #endregion
 
         #region Date
@@ -31,7 +29,7 @@ namespace DAL
         void AddFlightToHistoryDb(BE.FlightInfoPartial flight);
         BE.FlightInfoPartial GetFlight(Func<BE.FlightInfoPartial, bool> predicate = null);
 
-        List<FlightInfoPartial> GetAllFlightfromDB(Func<FlightInfoPartial, bool> predicate = null);
+        List<FlightInfoPartial> GetAllFlightsFromDB(Func<FlightInfoPartial, bool> predicate = null);
 
 
         #endregion

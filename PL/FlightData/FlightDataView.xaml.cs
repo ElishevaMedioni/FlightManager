@@ -13,21 +13,19 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PL.Historic
+namespace PL.FlightData
 {
     /// <summary>
-    /// Interaction logic for HistoricView.xaml
+    /// Interaction logic for FlightDataView.xaml
     /// </summary>
-    public partial class HistoricView : UserControl
+    public partial class FlightDataView : UserControl
     {
-        public HistoricViewModel historicViewModel;
-        public HistoricView()
+        public FlightDataViewModel FlightDataViewModel;
+        public FlightDataView()
         {
             InitializeComponent();
-            historicViewModel = new HistoricViewModel();
-            DataContext = historicViewModel;
-            FlightsHistoricList.ItemsSource = historicViewModel.GetFlightsHistoricViewModel();
+            FlightDataViewModel = new FlightDataViewModel();
+            DataContext = FlightDataViewModel;
         }
-
     }
 }

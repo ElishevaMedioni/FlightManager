@@ -17,7 +17,7 @@ namespace DB
 
         private const string FlightURL = @"https://data-live.flightradar24.com/clickhandler/?version=1.5&flight=";
         private const string WeatherURL = @"https://api.openweathermap.org/data/2.5/weather?lat={0}&lon={1}&appid={2}";
-        private const string dateURL = @"https://www.hebcal.com/converter?cfg=json&date={0}-{1}-{2}&g2h=1&strict=1";
+        private const string DateURL = @"https://www.hebcal.com/converter?cfg=json&date={0}-{1}-{2}&g2h=1&strict=1";
 
         private const string APIKey = "16e42275ad992efba2e0fd36ff522dc4";
 
@@ -181,7 +181,7 @@ namespace DB
                 var yyyy = date.ToString("yyyy");
                 var mm = date.ToString("MM");
                 var dd = date.ToString("dd");
-                string urldate = string.Format(dateURL, yyyy, mm, dd);
+                string urldate = string.Format(DateURL, yyyy, mm, dd);
 
 
                 var json = webClient.DownloadString(urldate);

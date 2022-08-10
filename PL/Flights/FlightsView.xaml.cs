@@ -181,9 +181,6 @@ namespace PL.Flights
 
         }
 
-
-
-
         private void UpdateWeather(BE.FlightInfoPartial selected)
         {
 

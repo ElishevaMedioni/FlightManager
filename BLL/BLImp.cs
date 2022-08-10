@@ -17,7 +17,7 @@ namespace BLL
    
         HelperClass Helper = new HelperClass();
 
-        Dictionary<string, IEnumerable<BE.FlightInfoPartial>> Result = new Dictionary<string, IEnumerable<BE.FlightInfoPartial>>(); //Belongs to BL
+        Dictionary<string, IEnumerable<BE.FlightInfoPartial>> flightOutAndIn = new Dictionary<string, IEnumerable<BE.FlightInfoPartial>>(); //Belongs to BL
         public IDAL dal { get; set; }
         public BLImp()
         {
@@ -31,17 +31,16 @@ namespace BLL
             IEnumerable<FlightInfoPartial> Incoming = dal.GetIncomingFlights();
             IEnumerable<FlightInfoPartial> Outgoing = dal.GetOutgoingFlights();
 
-            Result.Add("Incoming", Incoming);
-            Result.Add("Outgoing", Outgoing);
+            flightOutAndIn.Add("Incoming", Incoming);
+            flightOutAndIn.Add("Outgoing", Outgoing);
 
-            return Result;
+            return flightOutAndIn;
         }
        
         public FlightRoot GetFlightData(String Key)
         {
 
-            
-            return dal.GetCurrentflight(Key);
+            return dal.GetCurrentFlight(Key);
         }
         
         public void SaveFlightToDB(BE.FlightInfoPartial Flight)
@@ -55,11 +54,11 @@ namespace BLL
         }
 
         public List<FlightInfoPartial> GetAllFlightInfoPartial(Func<FlightInfoPartial, bool> predicate = null)
-            => dal.GetAllFlightfromDB(predicate);
+            => dal.GetAllFlightsFromDB(predicate);
 
         public bool ClearAllListFlights()
         {
-            Result.Clear();
+            flightOutAndIn.Clear();
             return dal.ClearAllFlights();
         }
 
@@ -72,8 +71,7 @@ namespace BLL
 
             try
             {
-
-                Info = dal.GetOneflightWeather(latitude, longitude);
+                Info = dal.GetOneFlightWeather(latitude, longitude);
 
                 Info.sys.sunsetDate = Helper.GetTimeFromEpoch(Convert.ToDouble(Info.sys.sunset));
                 Info.sys.sunriseDate = Helper.GetTimeFromEpoch(Convert.ToDouble(Info.sys.sunrise));

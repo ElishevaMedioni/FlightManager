@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="PL.FlightData.FlightDataView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:converters="clr-namespace:PL.Converters"
+             xmlns:helper="clr-namespace:BE;assembly=BE"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:local="clr-namespace:PL.FlightData"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="430.867">
+    <UserControl.Resources>
+        <!-- We can bind to a method, Not this time -->
+        <ObjectDataProvider ObjectType="{x:Type helper:HelperClass}" MethodName="GetDateTimeFromEpoch" x:Key="EpochConvert">
+            <ObjectDataProvider.MethodParameters>
+                <system:Double>0</system:Double>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
+        <converters:TickToDateTimeConverter x:Key="TickConvert"/>
+    </UserControl.Resources>
+    
+    <Grid Margin="38,0,28,0">
+        <StackPanel x:Name="DetailsPanel" HorizontalAlignment="Left" Height="150" VerticalAlignment="Top" Width="312" Margin="29,34,0,0">
+            <TextBlock Text="{Binding identification.callsign}"></TextBlock>
+            <TextBlock Text="{Binding aircraft.registration}"></TextBlock>
+            <TextBlock Text="{Binding airline.name}"></TextBlock>
+            <TextBlock Text="{Binding airport.origin.name}"></TextBlock>
+            <TextBlock Text="{Binding airport.origin.position.country.name}"></TextBlock>
+            <TextBlock Text="{Binding airport.destination.name}"></TextBlock>
+            <TextBlock Text="{Binding airport.destination.position.country.name}"></TextBlock>
+            <TextBlock Text="{Binding status.text}"></TextBlock>
+            <TextBlock Text="{Binding time.estimated.arrival,Converter={StaticResource TickConvert}}"></TextBlock>
+        </StackPanel>
+        <StackPanel x:Name="WeatherPanel" HorizontalAlignment="Center" Height="210" VerticalAlignment="Top" Width="345" Margin="0,248,0,0">
+            <TextBlock Text="{Binding weather[0].main}"></TextBlock>
+            <TextBlock Text="{Binding weather[0].description}"></TextBlock>
+            <TextBlock Text="{Binding sys.sunsetDate}"></TextBlock>
+            <TextBlock Text="{Binding sys.sunriseDate}"></TextBlock>
+            <TextBlock Text="{Binding main.temp}"></TextBlock>
+            <TextBlock Text="{Binding main.feels_like}"></TextBlock>
+
+        </StackPanel>
+
+    </Grid>
+</UserControl>

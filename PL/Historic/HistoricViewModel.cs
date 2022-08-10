@@ -19,9 +19,9 @@ namespace PL.Historic
             HistoricFlights = new ObservableCollection<BE.FlightInfoPartial>();
         }
 
-        public List<BE.FlightInfoPartial> GetFlightsHistoricByDate()
+        public List<BE.FlightInfoPartial> GetFlightsHistoricViewModel()
         {
-            return HistoricModel.GetFlightsHistoric();
+            return HistoricModel.GetFlightsHistoricModel();
         }
 
     }
