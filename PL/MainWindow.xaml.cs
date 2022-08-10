@@ -36,7 +36,7 @@ namespace PL
         {
             InitializeComponent();
             BL = new BLImp();
-            getAllflight();
+            //getAllflight();
         }
         private void getAllflightTOmap()
         {

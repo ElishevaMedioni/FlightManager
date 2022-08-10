@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BE;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,9 +15,19 @@ namespace PL.Flights
             FlightsModel = new FlightsModel();
         }
 
-        public Dictionary<string, IEnumerable<BE.FlightInfoPartial>> getAllFlights()
+        public Dictionary<string, IEnumerable<BE.FlightInfoPartial>> getAllFlightsViewModel()
         {
-            return FlightsModel.getAllflight();
+            return FlightsModel.getAllflightModel();
+        }
+
+        public FlightRoot GetFlightDataViewModel(FlightInfoPartial flightInfoPartial)
+        {
+            return FlightsModel.GetFlightDataModel(flightInfoPartial);
+        }
+
+        public void SaveFlightToDBViewModel(FlightInfoPartial flightInfoPartial)
+        {
+            FlightsModel.SaveFlightToDBModel(flightInfoPartial);
         }
     }
 }

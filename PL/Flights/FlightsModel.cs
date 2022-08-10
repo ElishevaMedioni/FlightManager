@@ -17,12 +17,21 @@ namespace PL.Flights
         {
             BL = new BLImp();
         }
-        public  Dictionary<string, IEnumerable<BE.FlightInfoPartial>> getAllflight()
+        public  Dictionary<string, IEnumerable<BE.FlightInfoPartial>> getAllflightModel()
         {
             //load current
            return BL.GetCurrentFlights();
 
-         
         }
+        public FlightRoot GetFlightDataModel(FlightInfoPartial flightInfoPartial)
+        {
+            return BL.GetFlightData(flightInfoPartial.SourceId);
+        }
+
+        public void SaveFlightToDBModel(FlightInfoPartial flightInfoPartial)
+        {
+            BL.SaveFlightToDB(flightInfoPartial);
+        }
+
     }
 }
