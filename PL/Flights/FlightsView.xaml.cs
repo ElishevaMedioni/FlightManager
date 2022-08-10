@@ -28,5 +28,18 @@ namespace PL.Flights
             flightsViewModel = new FlightsViewModel();
             DataContext = flightsViewModel;
         }
+
+        private void getAllflightToMap()
+        {
+            //load current
+            Dictionary<string, IEnumerable<BE.FlightInfoPartial>> FlightKeys ;
+
+            InFlightsListBox.DataContext = FlightKeys["Incoming"];
+            OutFlightsListBox.DataContext = FlightKeys["Outgoing"];
+            foreach (var Flight in FlightKeys["Incoming"])
+                PinCurrentFlight(Flight);
+            foreach (var Flight in FlightKeys["Outgoing"])
+                PinCurrentFlight(Flight);
+        }
     }
 }

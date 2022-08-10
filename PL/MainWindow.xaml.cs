@@ -38,7 +38,7 @@ namespace PL
             BL = new BLImp();
             getAllflight();
         }
-        private void getAllflight()
+        private void getAllflightTOmap()
         {
             //load current
             FlightKeys = BL.GetCurrentFlights();
