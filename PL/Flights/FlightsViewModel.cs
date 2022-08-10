@@ -29,5 +29,13 @@ namespace PL.Flights
         {
             FlightsModel.SaveFlightToDBModel(flightInfoPartial);
         }
+        public WeatherRoot GetWeatherWithLatLongViewModel(string latitude, string longitude)
+        {
+            return FlightsModel.GetWeatherWithLatLongModel(latitude, longitude);
+        }
+        public bool GetHolidayViewModel()
+        {
+            return FlightsModel.GetHolidayModel();
+        }
     }
 }

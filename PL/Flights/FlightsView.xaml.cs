@@ -43,6 +43,8 @@ namespace PL.Flights
                 PinCurrentFlight(Flight);
             foreach (var Flight in FlightKeys["Outgoing"])
                 PinCurrentFlight(Flight);
+            dateHoliday();
+
         }
 
         private void PinCurrentFlight(BE.FlightInfoPartial selected)
@@ -100,7 +102,7 @@ namespace PL.Flights
             BE.FlightInfoPartial SelectedFlight = null;
             SelectedFlight = e.AddedItems[0] as BE.FlightInfoPartial; //dangerous code - works but need to change it
             UpdateFlight(SelectedFlight);
-            UpdateWeather(SelectedFlight);
+            //UpdateWeather(SelectedFlight);
 
             flightsViewModel.SaveFlightToDBViewModel(SelectedFlight);
           
@@ -109,7 +111,7 @@ namespace PL.Flights
         private void UpdateFlight(BE.FlightInfoPartial selected)
         {
 
-            var Flight = BL.GetFlightData(selected.SourceId);
+            var Flight = flightsViewModel.GetFlightDataViewModel(selected);
 
             DetailsPanel.DataContext = Flight;
 
@@ -155,5 +157,56 @@ namespace PL.Flights
 
             }
         }
+        void addNewPolyLine(List<BE.Trail> Route)
+        {
+            //new version of MapPolyline -- different fields -- need to adapt
+
+
+            MapPolyline polyline = new MapPolyline();
+            //polyline.Fill = new System.Windows.Media.SolidColorBrush(Colors.Red);
+            polyline.Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Red);
+            polyline.StrokeThickness = 1;
+            polyline.Opacity = 0.7;
+            polyline.Locations = new LocationCollection();
+
+            foreach (var item in Route)
+            {
+                polyline.Locations.Add(new Location(item.lat, item.lng));
+            }
+
+            myMap.Children.Clear();
+            myMap.Children.Add(polyline);
+
+
+        }
+
+        private void UpdateWeather(BE.FlightInfoPartial selected)
+        {
+
+            var Flight = flightsViewModel.GetFlightDataViewModel(selected);
+
+            //some of the flight null
+            if (Flight != null)
+            {
+                BE.WeatherRoot weatherRoot = flightsViewModel.GetWeatherWithLatLongViewModel(Flight.airport.destination.position.latitude.ToString(), Flight.airport.destination.position.longitude.ToString());
+                WeatherPanel.DataContext = weatherRoot;
+            }
+        }
+        private void dateHoliday()
+        {
+
+            DateTime start = DateTime.Now;
+            bool flag = flightsViewModel.GetHolidayViewModel();
+            if (flag == true)
+            {
+                date.Text = "There is a holiday this week ";
+            }
+            else
+            {
+                date.Text = "There is no holiday this week ";
+
+            }
+        }
+
     }
 }

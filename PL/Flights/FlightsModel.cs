@@ -11,16 +11,16 @@ namespace PL.Flights
     public class FlightsModel
     {
         IBL BL;
-        
+
 
         public FlightsModel()
         {
             BL = new BLImp();
         }
-        public  Dictionary<string, IEnumerable<BE.FlightInfoPartial>> getAllflightModel()
+        public Dictionary<string, IEnumerable<BE.FlightInfoPartial>> getAllflightModel()
         {
             //load current
-           return BL.GetCurrentFlights();
+            return BL.GetCurrentFlights();
 
         }
         public FlightRoot GetFlightDataModel(FlightInfoPartial flightInfoPartial)
@@ -32,6 +32,13 @@ namespace PL.Flights
         {
             BL.SaveFlightToDB(flightInfoPartial);
         }
-
+        public WeatherRoot GetWeatherWithLatLongModel(string latitude, string longitude)
+        {
+            return BL.GetWeatherWithLatLong(latitude, longitude);
+        }
+        public bool GetHolidayModel()
+        {
+            return BL.GetHoliday();
+        }
     }
 }
