@@ -100,7 +100,7 @@ namespace BLL
             DateTime start = DateTime.Now;
             bool flag = false;
 
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 6; i++)
             {
                 flag = dal.GetHoliday(start.AddDays(i));
                 if (flag == true)
