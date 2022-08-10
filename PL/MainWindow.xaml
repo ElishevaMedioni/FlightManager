@@ -110,5 +110,14 @@
         <TextBox x:Name="date" HorizontalAlignment="Center" Margin="0,367,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="176" Height="17"/>
         <Button x:Name="historicButton" Content="Button" HorizontalAlignment="Center" Margin="0,426,0,0" Grid.Row="1" VerticalAlignment="Top" Width="70" Click="historicButton_Click"/>
 
+        <UserControl x:Name="MainUC"  HorizontalAlignment="Left" Margin="10,316,0,0" Grid.Row="1" VerticalAlignment="Top" Width="372" Height="167" Grid.ColumnSpan="2" Grid.Column="1" >
+            <UserControl.Resources>
+
+            </UserControl.Resources>
+            <ListBox ItemsSource="{Binding}" x:Name="historicListBox" HorizontalAlignment="Center" Height="112" Margin="0,67,0,0" VerticalAlignment="Top" Width="176" SelectionChanged="FlightsListBox_SelectionChanged" Grid.Row="1">
+
+            </ListBox>
+        </UserControl>
+
     </Grid>
 </Window>
