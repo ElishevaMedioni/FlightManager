@@ -13,5 +13,10 @@ namespace PL.Flights
         {
             FlightsModel = new FlightsModel();
         }
+
+        public Dictionary<string, IEnumerable<BE.FlightInfoPartial>> getAllFlights()
+        {
+            return FlightsModel.getAllflight();
+        }
     }
 }

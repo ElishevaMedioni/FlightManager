@@ -17,7 +17,7 @@ namespace PL.Flights
         {
             BL = new BLImp();
         }
-        private Dictionary<string, IEnumerable<BE.FlightInfoPartial>> getAllflight()
+        public  Dictionary<string, IEnumerable<BE.FlightInfoPartial>> getAllflight()
         {
             //load current
            return BL.GetCurrentFlights();
