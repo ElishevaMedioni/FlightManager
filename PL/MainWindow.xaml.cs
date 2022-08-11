@@ -63,7 +63,12 @@ namespace PL
             MainUC.Content = flightsView;
         }
 
-        
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+
 
         //private void Button_Click_1(object sender, RoutedEventArgs e)
         //{

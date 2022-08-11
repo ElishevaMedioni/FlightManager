@@ -9,69 +9,81 @@
         xmlns:converters="clr-namespace:PL.Converters"
         xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550" Width="1213">
-    <Window.Resources>
-        <Style TargetType="m:Pushpin" x:Key="FromIsrael">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate>
-                        <Image Source="Images\airplaneUpLeft.png"  />
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
+        Title="MainWindow" WindowState="Maximized" SizeToContent='Width'>
 
-        </Style>
-        <Style TargetType="m:Pushpin" x:Key="ToIsrael">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate>
-                        <Image Source="Images\airplaneUpRight.png"/>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <!-- We can bind to a method, Not this time -->
-        <ObjectDataProvider ObjectType="{x:Type helper:HelperClass}" MethodName="GetDateTimeFromEpoch" x:Key="EpochConvert">
-            <ObjectDataProvider.MethodParameters>
-                <system:Double>0</system:Double>
-            </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
-
-
-        <converters:TickToDateTimeConverter x:Key="TickConvert"/>
-
-    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50*"/>
             <RowDefinition Height="469*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="237*"/>
+            <ColumnDefinition Width="77*"/>
+            <ColumnDefinition Width="160*"/>
             <ColumnDefinition Width="47*"/>
             <ColumnDefinition Width="929*"/>
         </Grid.ColumnDefinitions>
 
 
         <!--<Button Content="Start Track" HorizontalAlignment="Left" Height="33" Margin="646,10,0,0" VerticalAlignment="Top" Width="126" Click="Button_Click_1" Grid.Column="2"/>-->
-        <TextBox x:Name="Counter" HorizontalAlignment="Left" Margin="777,15,0,10" TextWrapping="Wrap" Text="1" Width="45" Grid.Column="2"/>
 
-        
-        <Button x:Name="historicButton" Content="Button" HorizontalAlignment="Left" Margin="13,440,0,0" Grid.Row="1" VerticalAlignment="Top" Width="70" Click="historicButton_Click"/>
 
-        <UserControl x:Name="MainUC"  HorizontalAlignment="Left" Margin="101,0,0,0" VerticalAlignment="Top" Width="1077" Height="524" Grid.ColumnSpan="3" Grid.RowSpan="2" >
+        <UserControl x:Name="MainUC"  HorizontalAlignment="Left" Margin="109,0,0,0" VerticalAlignment="Top" Width="1038" Height="557" Grid.ColumnSpan="3" Grid.RowSpan="2" Grid.Column="1" >
             <UserControl.Resources>
+                <ResourceDictionary>
+                    <Style TargetType="m:Pushpin" x:Key="FromIsrael">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <Image Source="Images\airplaneUpLeft.png"  />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
 
+                    </Style>
+                    <Style TargetType="m:Pushpin" x:Key="ToIsrael">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <Image Source="Images\airplaneUpRight.png"/>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ResourceDictionary>
             </UserControl.Resources>
 
         </UserControl>
-        <StackPanel x:Name="menuUC" Margin="0,51,141,0" Grid.RowSpan="2">
-            <Button Content="Flights" Height="76" x:Name="FlightsButton" Click="FlightsButton_Click"/>
-            <Button Content="Historic" Height="81" x:Name="HistoricButton" Click="historicButton_Click"/>
+        <StackPanel x:Name="menuUC" Margin="0,83,278,188" Grid.ColumnSpan="2" Grid.RowSpan="2">
+            <Button Content="Flights" Height="60" x:Name="FlightsButton" Click="FlightsButton_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button Content="Historic" Height="60" x:Name="HistoricButton" Click="historicButton_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Button Content="Exit" Height="60" x:Name="ExitButton" Click="ExitButton_Click" VerticalAlignment="Bottom">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            
+
+
+
 
 
         </StackPanel>
+
 
     </Grid>
 </Window>

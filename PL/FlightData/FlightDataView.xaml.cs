@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BE;
 
 namespace PL.FlightData
 {
@@ -21,11 +22,13 @@ namespace PL.FlightData
     public partial class FlightDataView : UserControl
     {
         public FlightDataViewModel FlightDataViewModel;
-        public FlightDataView()
+        public FlightDataView(FlightRoot flightRoot, WeatherRoot weatherRoot)
         {
             InitializeComponent();
             FlightDataViewModel = new FlightDataViewModel();
             DataContext = FlightDataViewModel;
+            DetailsPanel.DataContext = flightRoot;
+            WeatherPanel.DataContext = weatherRoot;
         }
     }
 }

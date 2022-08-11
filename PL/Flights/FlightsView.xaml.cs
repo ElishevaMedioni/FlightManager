@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 using Microsoft.Maps.MapControl.WPF;
 using System.Collections.ObjectModel;
+using PL.FlightData;
 
 namespace PL.Flights
 {
@@ -25,6 +26,7 @@ namespace PL.Flights
     {
 
         public FlightsViewModel flightsViewModel;
+        private FlightDataView flightDataView;
         public FlightsView()
         {
             InitializeComponent();
@@ -72,6 +74,7 @@ namespace PL.Flights
                 if (Flight.airport.destination.code.iata == "TLV")
                 {
                     PinCurrent.Style = (Style)Resources["ToIsrael"];
+                    
                 }
                 else
                 {
@@ -106,7 +109,16 @@ namespace PL.Flights
             UpdateWeather(SelectedFlight);
 
             flightsViewModel.SaveFlightToDBViewModel(SelectedFlight);
-          
+
+            var Flight = flightsViewModel.GetFlightDataViewModel(SelectedFlight);
+            if (Flight != null)
+            {
+                BE.WeatherRoot weatherRoot = flightsViewModel.GetWeatherWithLatLongViewModel(Flight.airport.destination.position.latitude.ToString(), Flight.airport.destination.position.longitude.ToString());
+                flightDataView = new FlightDataView(Flight,weatherRoot);
+                FlightData.Content = flightDataView;
+            }
+
+
         }
 
         private void UpdateFlight(BE.FlightInfoPartial selected)
