@@ -58,8 +58,13 @@ namespace DAL
         {
             return DataSource.GetHolidayInit(dateTime);
         }
+        public DateRoot GetDate(DateTime dateTime)
+        {
+            return DataSource.GetdateInit(dateTime);
+        }
+
         #endregion
-        
+
         #region History
         void IDAL.AddFlightToHistoryDb(BE.FlightInfoPartial flight)
         {

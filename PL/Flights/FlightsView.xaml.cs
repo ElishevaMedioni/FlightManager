@@ -47,6 +47,8 @@ namespace PL.Flights
             foreach (var Flight in FlightKeys["Outgoing"])
                 PinCurrentFlight(Flight);
             dateHoliday();
+            getdateheb();
+
 
         }
 
@@ -221,8 +223,14 @@ namespace PL.Flights
 
             }
         }
+        private void getdateheb()
+        {
+            DateTime today = DateTime.Now;
+            dateheb.Text = flightsViewModel.GetdateViewModel(today).ToString()+" date:"+ today.ToString();
+        }
 
-        private void myMap_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+
+            private void myMap_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             ViewAllFlights();
 

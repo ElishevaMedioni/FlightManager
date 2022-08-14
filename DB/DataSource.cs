@@ -54,6 +54,8 @@ namespace DB
                         var key = item.Key;
                         if (key == "full_count") continue;
                         if (key == "version") continue;
+                        if (item.Value[11] == null) continue;
+                        if (item.Value[12] == null) continue;
                         if (item.Value[11].ToString() == "TLV")
 
                             Outgoing.Add(new FlightInfoPartial
@@ -98,7 +100,8 @@ namespace DB
                         var key = item.Key;
                         if (key == "full_count") continue;
                         if (key == "version") continue;
-
+                        if (item.Value[11] == null) continue;
+                        if (item.Value[12] == null) continue;
                         if (item.Value[12].ToString() == "TLV")
                             Incoming.Add(new FlightInfoPartial
                             {
@@ -185,13 +188,29 @@ namespace DB
 
 
                 var json = webClient.DownloadString(urldate);
-                Root Data = JsonConvert.DeserializeObject<Root>(json);
+                DateRoot Data = JsonConvert.DeserializeObject<DateRoot>(json);
                 Data.events.ForEach(Console.WriteLine);
                 var matchingvalues = Data.events.FirstOrDefault(stringToCheck => stringToCheck.Contains("Erev"));
 
                 if (matchingvalues != null)
                     return true;
                 else return false;
+            }
+        }
+        public static DateRoot GetdateInit(DateTime date)
+        {
+            using (var webClient = new System.Net.WebClient())
+            {
+                var yyyy = date.ToString("yyyy");
+                var mm = date.ToString("MM");
+                var dd = date.ToString("dd");
+                string urldate = string.Format(DateURL, yyyy, mm, dd);
+
+
+                var json = webClient.DownloadString(urldate);
+                DateRoot Data = JsonConvert.DeserializeObject<DateRoot>(json);
+                Data.events.ForEach(Console.WriteLine);
+                return Data;
             }
         }
 

@@ -37,5 +37,9 @@ namespace PL.Flights
         {
             return FlightsModel.GetHolidayModel();
         }
+        public DateRoot GetdateViewModel(DateTime date)
+        {
+            return FlightsModel.Getdate(date);
+        }
     }
 }
