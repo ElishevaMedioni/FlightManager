@@ -215,18 +215,18 @@ namespace PL.Flights
             bool flag = flightsViewModel.GetHolidayViewModel();
             if (flag == true)
             {
-                date.Text = "There is a holiday this week ";
+                date.Text = "✔️ There is a holiday this week ";
             }
             else
             {
-                date.Text = "There is no holiday this week ";
+                date.Text = "❌ There is no holiday this week ";
 
             }
         }
         private void getdateheb()
         {
             DateTime today = DateTime.Now;
-            dateheb.Text = flightsViewModel.GetdateViewModel(today).ToString()+" date:"+ today.ToString();
+            dateheb.Text = "📆 " + today.ToString()+ "\n🗓 " + flightsViewModel.GetdateViewModel(today).ToString();
         }
 
 

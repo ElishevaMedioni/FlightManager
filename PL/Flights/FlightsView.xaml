@@ -18,7 +18,7 @@
                     <Setter.Value>
                         <ControlTemplate>
                             <!--<Image Source="C:\Users\zeevm\source\repos\FlightManager\PL\Images\airplaneUpLeft.png"  />-->
-                            <Image Source="C:\Users\hilaa\source\repos\FlightManager\PL\Images\airplaneUpLeft.png"  />
+                            <Image Source="C:\Users\zeevm\source\repos\FlightManager\PL\Images\airplaneUpLeft.png"  />
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
@@ -29,7 +29,7 @@
                     <Setter.Value>
                         <ControlTemplate>
                             <!--<Image Source="C:\Users\zeevm\source\repos\FlightManager\PL\Images\airplaneUpRight.png"/>-->
-                            <Image Source="C:\Users\hilaa\source\repos\FlightManager\PL\Images\airplaneUpRight.png"/>
+                            <Image Source="C:\Users\zeevm\source\repos\FlightManager\PL\Images\airplaneUpRight.png"/>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
@@ -50,17 +50,34 @@
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50*"/>
-            <RowDefinition Height="469*"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="237*"/>
-            <ColumnDefinition Width="47*"/>
-            <ColumnDefinition Width="929*"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <!--<Button Content="Read All" HorizontalAlignment="Left" Height="36" Margin="58,10,0,0" VerticalAlignment="Top" Width="89" Click="Button_Click" RenderTransformOrigin="0.322,1.237"/>-->
-        <ListBox ItemsSource="{Binding}" x:Name="OutFlightsListBox" HorizontalAlignment="Center" Height="112" Margin="0,235,0,0" VerticalAlignment="Top" Width="176" SelectionChanged="FlightsListBox_SelectionChanged" Grid.Row="1">
+
+        <StackPanel Grid.Row="2">
+            
+        </StackPanel>
+
+        <Label Content="Incoming" HorizontalAlignment="Left"  VerticalAlignment="Top" Grid.Row="2" Height="30" Width="76" Margin="17,20,0,0" FontFamily="Candara" FontSize="16"/>
+        <ListBox ItemsSource="{Binding}" x:Name="InFlightsListBox" HorizontalAlignment="Left" Height="124" Margin="20,49,0,0" VerticalAlignment="Top" Width="176" SelectionChanged="FlightsListBox_SelectionChanged" Grid.Row="2" FontFamily="Candara" FontSize="14">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding SourceFilter}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <Label Content="Outgoing" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="2" Height="30" Width="85" Margin="16,0,0,122" FontSize="16" FontFamily="Candara"/>
+        <ListBox ItemsSource="{Binding}" x:Name="OutFlightsListBox" HorizontalAlignment="Center" Height="122" Margin="17,177,0,0" VerticalAlignment="Bottom" Width="176" SelectionChanged="FlightsListBox_SelectionChanged" Grid.Row="2" FontFamily="Candara" FontSize="14">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -70,25 +87,12 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-
-
-        <ListBox ItemsSource="{Binding}" x:Name="InFlightsListBox" HorizontalAlignment="Center" Height="112" Margin="0,67,0,0" VerticalAlignment="Top" Width="176" SelectionChanged="FlightsListBox_SelectionChanged" Grid.Row="1">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding SourceFilter}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-        <Label Content="Incoming" HorizontalAlignment="Left" Margin="30,36,0,0" VerticalAlignment="Top" Grid.Row="1" Height="26" Width="60"/>
-        <Label Content="Outgoing" HorizontalAlignment="Left" Margin="30,204,0,0" VerticalAlignment="Top" Grid.Row="1" Height="26" Width="61"/>
         <!-- Documentation
           https://docs.microsoft.com/en-us/previous-versions/bing/wpf-control/hh750210(v=msdn.10)
         -->
         <!-- get your own key from https://www.bingmapsportal.com/ -->
         <m:Map x:Name="myMap" CredentialsProvider="Am7ABZsl1hVs093AjZV82C3wxd-NCQ-KtBLpdtv4uB1UBvqIx7vcgN7Dw1A9RpQt"          
-               Center="32.000454,34.870743" ZoomLevel="5.0" AnimationLevel="None" Margin="15,24,10,10" Grid.Column="1" MouseDoubleClick="myMap_MouseDoubleClick" Grid.ColumnSpan="2" Grid.RowSpan="2" >
+               Center="32.000454,34.870743" ZoomLevel="5.0" AnimationLevel="None" Margin="15,24,10,21" Grid.Column="1" MouseDoubleClick="myMap_MouseDoubleClick" Grid.RowSpan="3" >
             <!-- <m:Pushpin Location="34.620574,34.34942"/>-->
         </m:Map>
         <!--<Button Content="Start Track" HorizontalAlignment="Left" Height="33" Margin="646,10,0,0" VerticalAlignment="Top" Width="126" Click="Button_Click_1" Grid.Column="2"/>-->
@@ -96,8 +100,8 @@
 
 
 
-        <TextBox x:Name="date" HorizontalAlignment="Center" Margin="0,367,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="136" Height="17"/>
-        <TextBox x:Name="dateheb" HorizontalAlignment="Center" Margin="0,389,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="187" Height="35" RenderTransformOrigin="0.482,0.761"/>
+        <TextBlock x:Name="date" HorizontalAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="186" Height="50" Grid.Row="1" FontFamily="Candara" FontSize="16" Margin="0,50,0,0" FontWeight="Bold"/>
+        <TextBlock x:Name="dateheb" HorizontalAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="188" Height="50" FontFamily="Candara" FontSize="18" FontWeight="Bold" Grid.Row="1"/>
         <UserControl x:Name="FlightData" Grid.Column="2" Margin="270,217,159,23" Grid.Row="1"/>
     </Grid>
 </UserControl>

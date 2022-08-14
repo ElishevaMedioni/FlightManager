@@ -30,8 +30,7 @@ namespace BE
 
         public override string ToString()
         {
-            return "heb-date"+
-                ": "+hy.ToString()
+            return hy.ToString()
                 +"/"+hm.ToString()
                 +"/" + hd.ToString();
 

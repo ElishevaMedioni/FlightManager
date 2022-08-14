@@ -161,7 +161,21 @@
     <Resource Include="Images\airplaneUpLeft.png" />
     <Resource Include="Images\airplaneUpRight.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\FlightRadar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="FlightRadar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="TrackMyFlight.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\TrackMyFlight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="TrackMyFlight.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
