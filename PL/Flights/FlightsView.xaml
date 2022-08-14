@@ -17,7 +17,7 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate>
-                            <Image Source="Images\airplaneUpLeft.png"  />
+                            <Image Source="C:\Users\zeevm\source\repos\FlightManager\PL\Images\airplaneUpLeft.png"  />
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
@@ -27,7 +27,7 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate>
-                            <Image Source="Images\airplaneUpRight.png"/>
+                            <Image Source="C:\Users\zeevm\source\repos\FlightManager\PL\Images\airplaneUpRight.png"/>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>

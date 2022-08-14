@@ -9,7 +9,7 @@
         xmlns:converters="clr-namespace:PL.Converters"
         xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
         mc:Ignorable="d"
-        Title="MainWindow" WindowState="Maximized" SizeToContent='Width'>
+        Title="MainWindow" Height="550" Width="1213">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -27,14 +27,14 @@
         <!--<Button Content="Start Track" HorizontalAlignment="Left" Height="33" Margin="646,10,0,0" VerticalAlignment="Top" Width="126" Click="Button_Click_1" Grid.Column="2"/>-->
 
 
-        <UserControl x:Name="MainUC"  HorizontalAlignment="Left" Margin="109,0,0,0" VerticalAlignment="Top" Width="1038" Height="557" Grid.ColumnSpan="3" Grid.RowSpan="2" Grid.Column="1" >
+        <UserControl x:Name="MainUC"  HorizontalAlignment="Left" Margin="35,0,0,0" VerticalAlignment="Top" Width="1112" Height="557" Grid.ColumnSpan="3" Grid.RowSpan="2" Grid.Column="1" >
             <UserControl.Resources>
                 <ResourceDictionary>
                     <Style TargetType="m:Pushpin" x:Key="FromIsrael">
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate>
-                                    <Image Source="Images\airplaneUpLeft.png"  />
+                                    <Image Source="C:\Users\zeevm\source\repos\FlightManager\PL\Images\airplaneUpLeft.png"  />
                                 </ControlTemplate>
                             </Setter.Value>
                         </Setter>
@@ -44,7 +44,7 @@
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate>
-                                    <Image Source="Images\airplaneUpRight.png"/>
+                                    <Image Source="C:\Users\zeevm\source\repos\FlightManager\PL\Images\airplaneUpRight.png"/>
                                 </ControlTemplate>
                             </Setter.Value>
                         </Setter>
@@ -53,7 +53,7 @@
             </UserControl.Resources>
 
         </UserControl>
-        <StackPanel x:Name="menuUC" Margin="0,83,278,188" Grid.ColumnSpan="2" Grid.RowSpan="2">
+        <StackPanel x:Name="menuUC" Margin="10,10,130,210" Grid.ColumnSpan="2" Grid.Row="1">
             <Button Content="Flights" Height="60" x:Name="FlightsButton" Click="FlightsButton_Click">
                 <Button.Resources>
                     <Style TargetType="Border">
@@ -76,7 +76,7 @@
                     </Style>
                 </Button.Resources>
             </Button>
-            
+
 
 
 
