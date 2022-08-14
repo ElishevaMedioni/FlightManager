@@ -125,7 +125,7 @@ namespace PL.Flights
         {
             var Flight = flightsViewModel.GetFlightDataViewModel(selected);
 
-            DetailsPanel.DataContext = Flight;
+            //DetailsPanel.DataContext = Flight;
 
 
             //update map
@@ -202,7 +202,7 @@ namespace PL.Flights
             if (Flight != null)
             {
                 BE.WeatherRoot weatherRoot = flightsViewModel.GetWeatherWithLatLongViewModel(Flight.airport.destination.position.latitude.ToString(), Flight.airport.destination.position.longitude.ToString());
-                WeatherPanel.DataContext = weatherRoot;
+                //WeatherPanel.DataContext = weatherRoot;
             }
         }
 

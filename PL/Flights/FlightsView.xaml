@@ -10,7 +10,7 @@
              xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
              xmlns:FlightData="clr-namespace:PL.FlightData" x:Class="PL.Flights.FlightsView" x:Name="FlightsUC"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" Background="White">
     <UserControl.Resources>
         <ResourceDictionary>
             <Style TargetType="{x:Type m:Pushpin}" x:Key="FromIsrael">
@@ -69,7 +69,7 @@
         </ListBox>
 
 
-        <Label Content="Flight Details" HorizontalAlignment="Left" Margin="6,20,0,0" VerticalAlignment="Top" Grid.Column="2" Height="26" Width="79"/>
+
         <ListBox ItemsSource="{Binding}" x:Name="InFlightsListBox" HorizontalAlignment="Center" Height="112" Margin="0,67,0,0" VerticalAlignment="Top" Width="176" SelectionChanged="FlightsListBox_SelectionChanged" Grid.Row="1">
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -86,34 +86,15 @@
         -->
         <!-- get your own key from https://www.bingmapsportal.com/ -->
         <m:Map x:Name="myMap" CredentialsProvider="Am7ABZsl1hVs093AjZV82C3wxd-NCQ-KtBLpdtv4uB1UBvqIx7vcgN7Dw1A9RpQt"          
-               Center="32.000454,34.870743" ZoomLevel="5.0" AnimationLevel="None" Margin="260,48,23,10" Grid.Column="2" Grid.RowSpan="2" MouseDoubleClick="myMap_MouseDoubleClick" >
+               Center="32.000454,34.870743" ZoomLevel="5.0" AnimationLevel="None" Margin="15,24,10,10" Grid.Column="1" MouseDoubleClick="myMap_MouseDoubleClick" Grid.ColumnSpan="2" Grid.RowSpan="2" >
             <!-- <m:Pushpin Location="34.620574,34.34942"/>-->
         </m:Map>
         <!--<Button Content="Start Track" HorizontalAlignment="Left" Height="33" Margin="646,10,0,0" VerticalAlignment="Top" Width="126" Click="Button_Click_1" Grid.Column="2"/>-->
         <TextBox x:Name="Counter" HorizontalAlignment="Left" Margin="777,15,0,10" TextWrapping="Wrap" Text="1" Width="45" Grid.Column="2"/>
-        <StackPanel x:Name="DetailsPanel" Grid.Column="2" HorizontalAlignment="Left" Height="183"  Grid.Row="1" VerticalAlignment="Top" Width="201" Margin="29,34,0,0">
-            <TextBlock Text="{Binding identification.callsign}"/>
-            <TextBlock Text="{Binding aircraft.registration}"/>
-            <TextBlock Text="{Binding airline.name}"/>
-            <TextBlock Text="{Binding airport.origin.name}"/>
-            <TextBlock Text="{Binding airport.origin.position.country.name}"/>
-            <TextBlock Text="{Binding airport.destination.name}"/>
-            <TextBlock Text="{Binding airport.destination.position.country.name}"/>
-            <TextBlock Text="{Binding status.text}"/>
-            <TextBlock Text="{Binding time.estimated.arrival, Converter={StaticResource TickConvert}}"/>
-        </StackPanel>
-        <StackPanel x:Name="WeatherPanel" Grid.Column="2" HorizontalAlignment="Left" Height="183"  Grid.Row="1" VerticalAlignment="Top" Width="201" Margin="10,275,0,0">
-            <TextBlock Text="{Binding weather[0].main}"/>
-            <TextBlock Text="{Binding weather[0].description}"/>
-            <TextBlock Text="{Binding sys.sunsetDate}"/>
-            <TextBlock Text="{Binding sys.sunriseDate}"/>
-            <TextBlock Text="{Binding main.temp}"/>
-            <TextBlock Text="{Binding main.feels_like}"/>
 
-        </StackPanel>
 
 
         <TextBox x:Name="date" HorizontalAlignment="Center" Margin="0,367,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="136" Height="17"/>
-        <UserControl x:Name="FlightData" Grid.Column="2" Margin="270,217,159,23" Grid.Row="1"/>
+        <UserControl x:Name="FlightData" Grid.Column="2" Grid.Row="1" Height="330" Width="280" Margin="307,36,26,11"/>
     </Grid>
 </UserControl>

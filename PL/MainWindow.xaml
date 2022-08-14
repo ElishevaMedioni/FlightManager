@@ -9,25 +9,24 @@
         xmlns:converters="clr-namespace:PL.Converters"
         xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550" Width="1213">
+        Title="MainWindow"  Width="{x:Static SystemParameters.PrimaryScreenWidth}"
+             Height="{x:Static SystemParameters.PrimaryScreenHeight}">
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50*"/>
-            <RowDefinition Height="469*"/>
+            
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="77*"/>
-            <ColumnDefinition Width="160*"/>
-            <ColumnDefinition Width="47*"/>
-            <ColumnDefinition Width="929*"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="*"/>
+            
         </Grid.ColumnDefinitions>
 
 
         <!--<Button Content="Start Track" HorizontalAlignment="Left" Height="33" Margin="646,10,0,0" VerticalAlignment="Top" Width="126" Click="Button_Click_1" Grid.Column="2"/>-->
 
 
-        <UserControl x:Name="MainUC"  HorizontalAlignment="Left" Margin="35,0,0,0" VerticalAlignment="Top" Width="1112" Height="557" Grid.ColumnSpan="3" Grid.RowSpan="2" Grid.Column="1" >
+        <UserControl x:Name="MainUC"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="1154" Height="665" Grid.Column="1" >
             <UserControl.Resources>
                 <ResourceDictionary>
                     <Style TargetType="m:Pushpin" x:Key="FromIsrael">
@@ -53,7 +52,7 @@
             </UserControl.Resources>
 
         </UserControl>
-        <StackPanel x:Name="menuUC" Margin="10,10,130,210" Grid.ColumnSpan="2" Grid.Row="1">
+        <StackPanel x:Name="menuUC" Grid.Column="0" Grid.Row="1" Width="90">
             <Button Content="Flights" Height="60" x:Name="FlightsButton" Click="FlightsButton_Click">
                 <Button.Resources>
                     <Style TargetType="Border">
