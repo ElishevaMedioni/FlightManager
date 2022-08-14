@@ -23,6 +23,7 @@ namespace DAL
 
         #region Date
         bool GetHoliday(DateTime dateTime);
+        DateRoot GetDate(DateTime dateTime);
         #endregion
 
         #region History

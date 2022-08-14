@@ -29,7 +29,9 @@ namespace BLL
         public Dictionary<string, IEnumerable<BE.FlightInfoPartial>>GetCurrentFlights()
         {
             IEnumerable<FlightInfoPartial> Incoming = dal.GetIncomingFlights();
+            Incoming = Incoming.Where(o => dal.GetCurrentFlight(o.SourceId) != null).ToList();
             IEnumerable<FlightInfoPartial> Outgoing = dal.GetOutgoingFlights();
+            Outgoing = Outgoing.Where(o => dal.GetCurrentFlight(o.SourceId) != null).ToList();
 
             flightOutAndIn.Add("Incoming", Incoming);
             flightOutAndIn.Add("Outgoing", Outgoing);
@@ -110,7 +112,12 @@ namespace BLL
 
         }
 
+        public DateRoot GetDate(DateTime date)
+        {
+            return dal.GetDate(date);
+        }
+
         #endregion Date
-       
+
     }
 }

@@ -15,7 +15,7 @@ namespace BE
         public string d { get; set; }
     }
 
-    public class Root
+    public class DateRoot
     {
         public int gy { get; set; }
         public int gm { get; set; }
@@ -27,6 +27,15 @@ namespace BE
         public string hebrew { get; set; }
         public HeDateParts heDateParts { get; set; }
         public List<string> events { get; set; }
+
+        public override string ToString()
+        {
+            return "heb-date"+
+                ": "+hy.ToString()
+                +"/"+hm.ToString()
+                +"/" + hd.ToString();
+
+        }
     }
 
 
