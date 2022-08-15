@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BE;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -19,9 +20,11 @@ namespace PL.Historic
             HistoricFlights = new ObservableCollection<BE.FlightInfoPartial>();
         }
 
-        public List<BE.FlightInfoPartial> GetFlightsHistoricViewModel()
+        public List<BE.FlightInfoPartial> GetFlightsHistoricViewModel(DateTime fromdate)
         {
-            return HistoricModel.GetFlightsHistoricModel();
+            var Flight=HistoricModel.GetFlightsHistoricModel();
+            List<FlightInfoPartial> ListByDate = Flight.Where(x => x.DateAndTime > fromdate).ToList();
+            return Flight;
         }
 
     }

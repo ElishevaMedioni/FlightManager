@@ -26,7 +26,12 @@ namespace PL.Historic
             InitializeComponent();
             historicViewModel = new HistoricViewModel();
             DataContext = historicViewModel;
-            FlightsHistoricList.ItemsSource = historicViewModel.GetFlightsHistoricViewModel();
+           
+        }
+        private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DateTime selectedFromDate = _datePicker.SelectedDate.Value;
+            FlightsHistoricList.ItemsSource = historicViewModel.GetFlightsHistoricViewModel(selectedFromDate);
         }
 
     }

@@ -58,6 +58,8 @@ namespace BLL
         public List<FlightInfoPartial> GetAllFlightInfoPartial(Func<FlightInfoPartial, bool> predicate = null)
             => dal.GetAllFlightsFromDB(predicate);
 
+
+
         public bool ClearAllListFlights()
         {
             flightOutAndIn.Clear();
@@ -116,6 +118,8 @@ namespace BLL
         {
             return dal.GetDate(date);
         }
+
+      
 
         #endregion Date
 
