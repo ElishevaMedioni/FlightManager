@@ -33,6 +33,7 @@ namespace PL.Flights
             flightsViewModel = new FlightsViewModel();
             DataContext = flightsViewModel;
             getAllflightToMap();
+            
         }
 
         private void getAllflightToMap()
@@ -107,6 +108,7 @@ namespace PL.Flights
             myMap.Children.Clear();
             BE.FlightInfoPartial SelectedFlight = null;
             SelectedFlight = e.AddedItems[0] as BE.FlightInfoPartial; //dangerous code - works but need to change it
+           
             UpdateFlight(SelectedFlight);
             UpdateWeather(SelectedFlight);
 
@@ -143,6 +145,10 @@ namespace PL.Flights
 
                 Pushpin PinCurrent = new Pushpin { ToolTip = selected.FlightCode };
                 Pushpin PinOrigin = new Pushpin { ToolTip = Flight.airport.origin.name };
+                Pushpin PinDestination = new Pushpin { ToolTip = Flight.airport.destination.name };
+
+                PinCurrent.MouseDoubleClick += Pushpin_MouseDoubleClick;
+                //PinCurrent.MouseEnter += Pushpin_MouseEnter;
 
                 PositionOrigin origin = new PositionOrigin { X = 0.4, Y = 0.4 };
 
@@ -230,10 +236,29 @@ namespace PL.Flights
         }
 
 
-            private void myMap_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            ViewAllFlights();
+        //private void myMap_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        //{
+        //    ViewAllFlights();
 
+        //}
+
+        private void Pushpin_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            myMap.Children.Clear();
+            BE.FlightInfoPartial SelectedFlight = null;
+            SelectedFlight = e.Source as BE.FlightInfoPartial;
+            //SelectedFlight = e. as BE.FlightInfoPartial; //dangerous code - works but need to change it
+            //UpdateFlight(SelectedFlight);
+            //UpdateWeather(SelectedFlight);
+
+
+            var Flight = flightsViewModel.GetFlightDataViewModel(SelectedFlight);
+            if (Flight != null)
+            {
+                BE.WeatherRoot weatherRoot = flightsViewModel.GetWeatherWithLatLongViewModel(Flight.airport.destination.position.latitude.ToString(), Flight.airport.destination.position.longitude.ToString());
+                flightDataView = new FlightDataView(Flight, weatherRoot);
+                FlightData.Content = flightDataView;
+            }
         }
     }
 }

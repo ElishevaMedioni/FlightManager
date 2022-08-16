@@ -7,7 +7,7 @@
              xmlns:helper="clr-namespace:BE;assembly=BE"
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              xmlns:local="clr-namespace:PL.FlightData"
-             mc:Ignorable="d" FontFamily="Bahnschrift Light" Width="280" Height="330" >
+             mc:Ignorable="d" FontFamily="Cantara" Width="Auto" Height="Auto" FontWeight="Bold"  >
     <UserControl.Resources>
         <!-- We can bind to a method, Not this time -->
         <ObjectDataProvider ObjectType="{x:Type helper:HelperClass}" MethodName="GetDateTimeFromEpoch" x:Key="EpochConvert">
@@ -18,9 +18,9 @@
 
         <converters:TickToDateTimeConverter x:Key="TickConvert"/>
     </UserControl.Resources>
-   
+
     <Border CornerRadius="15" Padding="5" 
-    HorizontalAlignment="Center" VerticalAlignment="Center" Height="330" Opacity="0.9">
+    HorizontalAlignment="Center" VerticalAlignment="Center" Height="Auto" Opacity="0.9">
 
         <Border.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -28,38 +28,57 @@
                 <GradientStop Color="White" Offset="0.703"/>
             </LinearGradientBrush>
         </Border.Background>
-        
-        <Grid Width="280" Opacity="0.7">
-            
+
+        <Grid Width="280" Opacity="0.9" Height="Auto">
+
             <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="15"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="15"/>
             </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions></Grid.ColumnDefinitions>
-            <StackPanel x:Name="DetailsPanel" HorizontalAlignment="Center" Height="138" VerticalAlignment="Bottom" Width="240" Grid.Row="0">
-                
-                    
-                
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel x:Name="DetailsPanel" HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Stretch" Width="230" Grid.Row="1" Grid.Column="1">
+                <StackPanel.Resources>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="Margin" Value="0,3,0,0"/>
+                    </Style>
+                </StackPanel.Resources>
                 <TextBlock Text="{Binding identification.callsign}" ></TextBlock>
                 <TextBlock Text="{Binding aircraft.registration}"></TextBlock>
                 <TextBlock Text="{Binding airline.name}"></TextBlock>
+
                 <TextBlock Text="{Binding airport.origin.name}"></TextBlock>
-                <TextBlock Text="{Binding airport.origin.position.country.name}"></TextBlock>
+                <TextBlock Text="{Binding airport.origin.position.country.name, StringFormat='🛫 {0}'}"></TextBlock>
                 <TextBlock Text="{Binding airport.destination.name}"></TextBlock>
-                <TextBlock Text="{Binding airport.destination.position.country.name}"></TextBlock>
-                <TextBlock Text="{Binding status.text}"></TextBlock>
-                <TextBlock Text="{Binding time.estimated.arrival,Converter={StaticResource TickConvert}}"></TextBlock>
-                
-            </StackPanel>
-            <StackPanel x:Name="WeatherPanel" HorizontalAlignment="Center" Height="126" VerticalAlignment="Top" Width="240" Grid.Row="1">
-                <TextBlock Text="{Binding weather[0].main}"></TextBlock>
-                <TextBlock Text="{Binding weather[0].description}"></TextBlock>
-                <TextBlock Text="{Binding sys.sunsetDate}"></TextBlock>
-                <TextBlock Text="{Binding sys.sunriseDate}"></TextBlock>
-                <TextBlock Text="{Binding main.temp}"></TextBlock>
-                <TextBlock Text="{Binding main.feels_like}"></TextBlock>
+                <TextBlock Text="{Binding airport.destination.position.country.name, StringFormat='🛬 {0}'}"></TextBlock>
+                <TextBlock Text="{Binding status.text, StringFormat='Status: {0}'}"></TextBlock>
+                <TextBlock Text="{Binding time.estimated.arrival, StringFormat='⌚ {0}',Converter={StaticResource TickConvert}}"></TextBlock>
+
+                <TextBlock Text="{Binding time.scheduled.arrival, StringFormat='⌚ {0}',Converter={StaticResource TickConvert}}"></TextBlock>
+
 
             </StackPanel>
+            <StackPanel x:Name="WeatherPanel" HorizontalAlignment="Left" Height="Auto" Width="187" Grid.Row="3" Grid.Column="1" >
+                <StackPanel.Resources>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="Margin" Value="0,3,0,0"/>
+                    </Style>
+                </StackPanel.Resources>
+                <TextBlock Text="{Binding weather[0].main}"></TextBlock>
+                <TextBlock Text="{Binding weather[0].description}"></TextBlock>
+                <TextBlock Text="{Binding main.temp, StringFormat='🌡️Temperature {0} °C'}"></TextBlock>
+                <TextBlock Text="{Binding wind.speed, StringFormat='💨Wind {0} km/h'}" VerticalAlignment="Center"></TextBlock>
+
+            </StackPanel>
+            <Image x:Name="weatherIcon" HorizontalAlignment="Left" Height="57" Margin="191,1,0,0" Grid.Row="3" VerticalAlignment="Top" Width="60" Grid.Column="1"/>
+            <Image Grid.Column="1" HorizontalAlignment="Left" Height="87" Margin="191,0,0,0" VerticalAlignment="Top" Width="83" Source="/FlightData/infoIcon.png" Grid.RowSpan="2"/>
+
+
 
         </Grid>
     </Border>
