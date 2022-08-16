@@ -188,6 +188,12 @@
   <ItemGroup>
     <Resource Include="FlightData\infoIcon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Flights\airplaneUpLeft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Flights\airplaneUpRight.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
