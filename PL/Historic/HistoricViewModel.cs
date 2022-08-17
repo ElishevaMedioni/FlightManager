@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace PL.Historic
 {
@@ -34,12 +35,20 @@ namespace PL.Historic
 
         public void DeletFlightHistoricViewModel(int idFlight)
         {
+            //delete from Db
             HistoricModel.DeletFlightHistoricModel(idFlight);
+            //delete from ObservableCollection
+            var flightDelete = HistoricFlights.FirstOrDefault(x => x.Id == idFlight);
+            if (flightDelete==null)
+                MessageBox.Show("Unable to save file, try again.");
+            else
+                HistoricFlights.Remove(flightDelete);
         }
 
         public void DeletFlightsHistoricViewModel(List<FlightInfoPartial> DeletFlight)
         {
             HistoricModel.DeletFlightsHistoricModel(DeletFlight);
+            HistoricFlights.Clear();
 
         }
     }
