@@ -57,12 +57,14 @@ namespace PL.Historic
             }
            else
                 historicViewModel.DeleteFlightHistoricViewModel(flightToDelete.Id);
+            FlightsHistoricList.ItemsSource = historicViewModel.HistoricFlights;
         }
 
         private void DeleteAllHistoric_Click(object sender, RoutedEventArgs e)
         {
             var flight =historicViewModel.GetFlightsHistoricViewModel();
             historicViewModel.DeleteFlightsHistoricViewModel(flight); ;
+            FlightsHistoricList.ItemsSource = historicViewModel.HistoricFlights;
         }
 
         //private void _Calendar_SelectionModeChanged(object sender, EventArgs e)
