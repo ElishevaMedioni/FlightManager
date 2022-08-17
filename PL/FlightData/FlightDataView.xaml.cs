@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,6 +30,12 @@ namespace PL.FlightData
             DataContext = FlightDataViewModel;
             DetailsPanel.DataContext = flightRoot;
             WeatherPanel.DataContext = weatherRoot;
+            weatherIcon.Source = new BitmapImage(new Uri("https://openweathermap.org/img/w/" + weatherRoot.weather[0].icon + ".png"));
+
         }
+
+        
+        
+        
     }
 }

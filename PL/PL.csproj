@@ -176,6 +176,24 @@
   <ItemGroup>
     <Resource Include="TrackMyFlight.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FlightDataViewBackground.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="FlightData\FlightDataViewBackground.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\infoIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="FlightData\infoIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Flights\airplaneUpLeft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Flights\airplaneUpRight.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

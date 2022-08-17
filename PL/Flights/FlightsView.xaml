@@ -18,7 +18,7 @@
                     <Setter.Value>
                         <ControlTemplate>
                             <!--<Image Source="C:\Users\zeevm\source\repos\FlightManager\PL\Images\airplaneUpLeft.png"  />-->
-                            <Image Source="C:\Users\hilaa\source\repos\FlightManager\PL\Images\airplaneUpLeft.png"  />
+                            <Image Source="/Flights/airplaneUpLeft.png"  />
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
@@ -29,7 +29,7 @@
                     <Setter.Value>
                         <ControlTemplate>
                             <!--<Image Source="C:\Users\zeevm\source\repos\FlightManager\PL\Images\airplaneUpRight.png"/>-->
-                            <Image Source="C:\Users\hilaa\source\repos\FlightManager\PL\Images\airplaneUpRight.png"/>
+                            <Image Source="/Flights/airplaneUpRight.png"/>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
@@ -100,8 +100,9 @@
         -->
         <!-- get your own key from https://www.bingmapsportal.com/ -->
         <m:Map x:Name="myMap" CredentialsProvider="Am7ABZsl1hVs093AjZV82C3wxd-NCQ-KtBLpdtv4uB1UBvqIx7vcgN7Dw1A9RpQt"          
-               Center="32.000454,34.870743" ZoomLevel="5.0" AnimationLevel="None" Margin="15,0,10,50" Grid.Column="2" MouseDoubleClick="myMap_MouseDoubleClick" Grid.RowSpan="7" Grid.Row="1" >
-            <!-- <m:Pushpin Location="34.620574,34.34942"/>-->
+               Center="32.000454,34.870743" ZoomLevel="5.0" AnimationLevel="None" Margin="15,0,10,50" Grid.Column="2" Grid.RowSpan="7" Grid.Row="1"   >
+            <!--<m:Pushpin MouseDoubleClick="Pushpin_MouseDoubleClick" MouseEnter="Pushpin_MouseEnter"/>-->
+
         </m:Map>
         <!--<Button Content="Start Track" HorizontalAlignment="Left" Height="33" Margin="646,10,0,0" VerticalAlignment="Top" Width="126" Click="Button_Click_1" Grid.Column="2"/>-->
         <TextBox x:Name="Counter" HorizontalAlignment="Left" Margin="777,15,0,10" TextWrapping="Wrap" Text="1" Width="45" Grid.Column="2"/>
@@ -110,6 +111,6 @@
 
         <TextBlock x:Name="date" HorizontalAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="50" Grid.Row="1" FontFamily="Candara" FontSize="16" Margin="0,50,0,0" FontWeight="Bold" Grid.Column="1"/>
         <TextBlock x:Name="dateheb" HorizontalAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="50" FontFamily="Candara" FontSize="18" FontWeight="Bold" Grid.Row="1" Grid.Column="1"/>
-        <UserControl x:Name="FlightData" Grid.Column="2" Margin="405,98,27,62" Grid.Row="3" Grid.RowSpan="4"/>
+        <UserControl x:Name="FlightData" Grid.Column="2" Margin="295,50,10,50" Grid.Row="1" Grid.RowSpan="6"/>
     </Grid>
 </UserControl>
