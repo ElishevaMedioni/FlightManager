@@ -26,13 +26,20 @@ namespace PL.Historic
             InitializeComponent();
             historicViewModel = new HistoricViewModel();
             DataContext = historicViewModel;
+            DateTime selectedStartDate = _datePicker.DisplayDateStart.Value.Date;
+            DateTime selectedEndDate = _datePicker.DisplayDateStart.Value.Date;
+            FlightsHistoricList.ItemsSource = historicViewModel.GetFlightsHistoricByDateViewModel(selectedStartDate, selectedEndDate);
            
-        }
-        private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
-        {
-            DateTime selectedFromDate = _datePicker.SelectedDate.Value;
-            FlightsHistoricList.ItemsSource = historicViewModel.GetFlightsHistoricViewModel(selectedFromDate);
+
+
         }
 
+        private void _datePicker_SelectionModeChanged(object sender, EventArgs e)
+        {
+            DateTime selectedStartDate = _datePicker..Value;
+            DateTime selectedEndDate = _datePicker.DisplayDateEnd.Value;
+            FlightsHistoricList.ItemsSource = historicViewModel.GetFlightsHistoricByDateViewModel(selectedStartDate, selectedEndDate);
+
+        }
     }
 }

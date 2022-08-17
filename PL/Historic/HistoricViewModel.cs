@@ -20,11 +20,16 @@ namespace PL.Historic
             HistoricFlights = new ObservableCollection<BE.FlightInfoPartial>();
         }
 
-        public List<BE.FlightInfoPartial> GetFlightsHistoricViewModel(DateTime fromdate)
+        public List<BE.FlightInfoPartial> GetFlightsHistoricViewModel()
         {
             var Flight=HistoricModel.GetFlightsHistoricModel();
-            List<FlightInfoPartial> ListByDate = Flight.Where(x => x.DateAndTime > fromdate).ToList();
+           
             return Flight;
+        }
+        public List<BE.FlightInfoPartial> GetFlightsHistoricByDateViewModel(DateTime start, DateTime end)
+        {
+            List<FlightInfoPartial> ListByDate = HistoricModel.GetFlightsHistoricByDateModel(start, end);
+            return ListByDate;
         }
 
     }
