@@ -58,6 +58,14 @@ namespace BLL
         public List<FlightInfoPartial> GetAllFlightInfoPartial(Func<FlightInfoPartial, bool> predicate = null)
             => dal.GetAllFlightsFromDB(predicate);
 
+        public void DeleteFlight(int IdKey) => dal.DeleteFlightsFromDB(IdKey);
+
+        public void DeleteFlights(List<FlightInfoPartial> flightsDelete)
+        {
+            foreach (var flight in flightsDelete)
+                dal.DeleteFlightsFromDB(flight.Id);
+        }
+
 
 
         public bool ClearAllListFlights()

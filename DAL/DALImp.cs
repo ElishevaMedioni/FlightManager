@@ -100,6 +100,17 @@ namespace DAL
                 }
             }
         }
+        public void DeleteFlightsFromDB(int IdKey)
+        {
+            using (var ctx = new HistoryDb())
+            {
+                var y = (from x in ctx.HistoryFlights where x.Id == IdKey select x).First();
+                ctx.HistoryFlights.Remove(y);
+                ctx.SaveChanges();
+
+            }
+
+        }
         #endregion
 
     }

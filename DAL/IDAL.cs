@@ -31,6 +31,7 @@ namespace DAL
         BE.FlightInfoPartial GetFlight(Func<BE.FlightInfoPartial, bool> predicate = null);
 
         List<FlightInfoPartial> GetAllFlightsFromDB(Func<FlightInfoPartial, bool> predicate = null);
+        void DeleteFlightsFromDB(int IdKey);
 
 
         #endregion

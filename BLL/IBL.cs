@@ -19,6 +19,8 @@ namespace BLL
         void SaveFlightToDB(BE.FlightInfoPartial Flight);
        
         List<FlightInfoPartial> GetAllFlightInfoPartial(Func<FlightInfoPartial, bool> predicate = null);
+        void DeleteFlight(int IdKey);
+        void DeleteFlights(List<FlightInfoPartial> flightsDelete);
 
         #endregion Flight
 
