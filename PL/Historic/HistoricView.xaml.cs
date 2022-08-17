@@ -26,7 +26,9 @@ namespace PL.Historic
             InitializeComponent();
             historicViewModel = new HistoricViewModel();
             DataContext = historicViewModel;
-         
+
+            FlightsHistoricList.ItemsSource = historicViewModel.GetFlightsHistoricViewModel();
+
         }
         //private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         //{
@@ -37,6 +39,12 @@ namespace PL.Historic
 
         private void DisplayHistoric_Click(object sender, RoutedEventArgs e)
         {
+             
+            if (_Calendar.SelectedDate.HasValue)
+            {
+                _Calendar.SelectedDates.Clear();
+            }
+            
             FlightsHistoricList.ItemsSource = historicViewModel.GetFlightsHistoricViewModel();
 
         }
@@ -46,16 +54,16 @@ namespace PL.Historic
             BE.FlightInfoPartial flightToDelete = FlightsHistoricList.SelectedItem as BE.FlightInfoPartial;
            if (flightToDelete==null)
             {
-                MessageBox.Show("Unable to do this, try again.");
+                MessageBox.Show("You didn't select a flight to delete.");
             }
            else
-                historicViewModel.DeletFlightHistoricViewModel(flightToDelete.Id);
+                historicViewModel.DeleteFlightHistoricViewModel(flightToDelete.Id);
         }
 
         private void DeleteAllHistoric_Click(object sender, RoutedEventArgs e)
         {
             var flight =historicViewModel.GetFlightsHistoricViewModel();
-            historicViewModel.DeletFlightsHistoricViewModel(flight); ;
+            historicViewModel.DeleteFlightsHistoricViewModel(flight); ;
         }
 
         //private void _Calendar_SelectionModeChanged(object sender, EventArgs e)
@@ -81,6 +89,11 @@ namespace PL.Historic
                 DateTime selectedEndDate = calendar.SelectedDates.Last();
                 FlightsHistoricList.ItemsSource = historicViewModel.GetFlightsHistoricByDateViewModel(selectedStartDate, selectedEndDate);
             }
+        }
+
+        private void FlightsHistoricList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            FlightsHistoricList.Items.Refresh();
         }
     }
 }

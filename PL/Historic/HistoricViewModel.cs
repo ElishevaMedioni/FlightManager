@@ -31,16 +31,19 @@ namespace PL.Historic
         public HistoricViewModel()
         {
             HistoricModel = new HistoricModel();
-            HistoricFlights = new ObservableCollection<BE.FlightInfoPartial>();
+            historicFlights = new ObservableCollection<BE.FlightInfoPartial>();
+            
         }
 
        
 
         public List<BE.FlightInfoPartial> GetFlightsHistoricViewModel()
         {
-            var Flight = HistoricModel.GetFlightsHistoricModel();
+            var Flights = HistoricModel.GetFlightsHistoricModel();
+            
+            HistoricFlights = new ObservableCollection<FlightInfoPartial>(Flights);
 
-            return Flight;
+            return Flights;
         }
         public List<BE.FlightInfoPartial> GetFlightsHistoricByDateViewModel(DateTime start, DateTime end)
         {
@@ -48,21 +51,21 @@ namespace PL.Historic
             return ListByDate;
         }
 
-        public void DeletFlightHistoricViewModel(int idFlight)
+        public void DeleteFlightHistoricViewModel(int idFlight)
         {
             //delete from ObservableCollection
             var flightDelete = HistoricFlights.FirstOrDefault(x => x.Id == idFlight);
 
                 HistoricFlights.Remove(flightDelete);
                 //delete from Db
-                HistoricModel.DeletFlightHistoricModel(idFlight);
+                HistoricModel.DeleteFlightHistoricModel(idFlight);
 
         }
 
-        public void DeletFlightsHistoricViewModel(List<FlightInfoPartial> DeletFlight)
+        public void DeleteFlightsHistoricViewModel(List<FlightInfoPartial> DeletFlight)
         {
-            HistoricModel.DeletFlightsHistoricModel(DeletFlight);
-            HistoricFlights.Clear();
+            HistoricModel.DeleteFlightsHistoricModel(DeletFlight);
+            historicFlights.Clear();
 
         }
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

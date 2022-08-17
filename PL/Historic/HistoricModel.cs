@@ -29,12 +29,12 @@ namespace PL.Historic
                 .ToList();
             return ListByDate;
         }
-        public void DeletFlightHistoricModel(int idFlight)
+        public void DeleteFlightHistoricModel(int idFlight)
         {
             BL.DeleteFlight(idFlight);
         }
 
-        public void DeletFlightsHistoricModel(List<FlightInfoPartial> DeletFlight)
+        public void DeleteFlightsHistoricModel(List<FlightInfoPartial> DeletFlight)
         {
             BL.DeleteFlights(DeletFlight);
         }
