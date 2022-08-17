@@ -35,14 +35,13 @@ namespace PL.Historic
 
         public void DeletFlightHistoricViewModel(int idFlight)
         {
-            //delete from Db
-            HistoricModel.DeletFlightHistoricModel(idFlight);
             //delete from ObservableCollection
             var flightDelete = HistoricFlights.FirstOrDefault(x => x.Id == idFlight);
-            if (flightDelete==null)
-                MessageBox.Show("Unable to save file, try again.");
-            else
+
                 HistoricFlights.Remove(flightDelete);
+                //delete from Db
+                HistoricModel.DeletFlightHistoricModel(idFlight);
+
         }
 
         public void DeletFlightsHistoricViewModel(List<FlightInfoPartial> DeletFlight)

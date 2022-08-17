@@ -43,11 +43,13 @@ namespace PL.Historic
 
         private void DeleteSelectedFlight_Click(object sender, RoutedEventArgs e)
         {
-            BE.FlightInfoPartial flightToDelete = null;
-
-            flightToDelete = FlightsHistoricList.SelectedItem as BE.FlightInfoPartial;
-           
-            historicViewModel.DeletFlightHistoricViewModel(flightToDelete.Id);
+            BE.FlightInfoPartial flightToDelete = FlightsHistoricList.SelectedItem as BE.FlightInfoPartial;
+           if (flightToDelete==null)
+            {
+                MessageBox.Show("Unable to do this, try again.");
+            }
+           else
+                historicViewModel.DeletFlightHistoricViewModel(flightToDelete.Id);
         }
 
         private void DeleteAllHistoric_Click(object sender, RoutedEventArgs e)
