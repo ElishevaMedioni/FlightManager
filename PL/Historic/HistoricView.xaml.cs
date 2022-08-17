@@ -43,7 +43,7 @@ namespace PL.Historic
 
         private void DeleteSelectedFlight_Click(object sender, RoutedEventArgs e)
         {
-
+            //FlightsHistoricList.SelectedItem
            // historicViewModel.DeletFlightHistoricViewModel();
         }
 
