@@ -17,9 +17,9 @@
         </ListView>
 
         <Calendar x:Name="_datePicker" SelectionMode="SingleRange"  Width="170" Margin="10,47,620,0" VerticalAlignment="Top" FontWeight="SemiBold"
-                     FontSize="15" SelectionModeChanged="_datePicker_SelectionModeChanged" />
+                     FontSize="15"  />
 
-
+        <!--SelectionModeChanged="_datePicker_SelectionModeChanged"-->
 
 
     </Grid>

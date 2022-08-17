@@ -25,8 +25,10 @@ namespace PL.Historic
         {
             var Flight = GetFlightsHistoricModel();
             List<FlightInfoPartial> ListByDate = Flight.Where(x => x.DateAndTime > start && x.DateAndTime < end).ToList();
-            return BL.GetAllFlightInfoPartial(null);
+            return ListByDate;
         }
+
+        
 
     }
 }
