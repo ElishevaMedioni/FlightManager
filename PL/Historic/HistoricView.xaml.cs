@@ -35,6 +35,23 @@ namespace PL.Historic
             FlightsHistoricList.ItemsSource = historicViewModel.GetFlightsHistoricByDateViewModel(selectedDate, now);
         }
 
+        private void DisplayHistoric_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteSelectedFlight_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteAllHistoric_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        
+
         //private void _datePicker_SelectionModeChanged(object sender, EventArgs e)
         //{
         //    DateTime selectedStartDate = _datePicker..Value;
