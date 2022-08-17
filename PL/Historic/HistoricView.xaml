@@ -28,8 +28,12 @@
             </ListView.View>
 
         </ListView>
-        <DatePicker x:Name="_datePicker"  Width="170" Margin="18,31,12,0" VerticalAlignment="Top" FontWeight="SemiBold"
-                     FontSize="15" SelectedDateChanged="DatePicker_SelectedDateChanged" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left"/>
+        <Calendar x:Name="_Calendar" Width="170" Margin="18,31,0,0" VerticalAlignment="Top" FontWeight="SemiBold"
+                     FontSize="15" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" SelectionMode="SingleRange" SelectionModeChanged="_Calendar_SelectionModeChanged" Height="119" Grid.RowSpan="2"  />
+
+
+        <!--<DatePicker x:Name="_datePicker"  Width="170" Margin="18,31,12,0" VerticalAlignment="Top" FontWeight="SemiBold"
+                     FontSize="15" SelectedDateChanged="DatePicker_SelectedDateChanged" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left"/>-->
 
         <StackPanel x:Name="menu"  Margin="0,10,0,10" Grid.Column="1" Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <Grid Height="50" Margin="0,10,0,0">
@@ -61,10 +65,7 @@
             </Grid>
 
         </StackPanel>
-        <!--<Calendar x:Name="_datePicker" SelectionMode="SingleRange"  Width="170" Margin="10,47,620,0" VerticalAlignment="Top" FontWeight="SemiBold"
-                     FontSize="15"  />-->
 
-        <!--SelectionModeChanged="_datePicker_SelectionModeChanged"-->
 
 
     </Grid>

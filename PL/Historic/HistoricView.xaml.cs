@@ -28,12 +28,12 @@ namespace PL.Historic
             DataContext = historicViewModel;
          
         }
-        private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
-        {
-            DateTime selectedDate = _datePicker.SelectedDate.Value;
-            DateTime now= DateTime.Now;
-            FlightsHistoricList.ItemsSource = historicViewModel.GetFlightsHistoricByDateViewModel(selectedDate, now);
-        }
+        //private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    DateTime selectedDate = _datePicker.SelectedDate.Value;
+        //    DateTime now= DateTime.Now;
+        //    FlightsHistoricList.ItemsSource = historicViewModel.GetFlightsHistoricByDateViewModel(selectedDate, now);
+        //}
 
         private void DisplayHistoric_Click(object sender, RoutedEventArgs e)
         {
@@ -53,14 +53,21 @@ namespace PL.Historic
             historicViewModel.DeletFlightsHistoricViewModel(flight); ;
         }
 
-        
+        private void _Calendar_SelectionModeChanged(object sender, EventArgs e)
+        {
 
-        //private void _datePicker_SelectionModeChanged(object sender, EventArgs e)
-        //{
-        //    DateTime selectedStartDate = _datePicker..Value;
-        //    DateTime selectedEndDate = _datePicker.DisplayDateEnd.Value;
-        //    FlightsHistoricList.ItemsSource = historicViewModel.GetFlightsHistoricByDateViewModel(selectedStartDate, selectedEndDate);
+            var calendar = sender as Calendar;
 
-        //}
+            if (calendar.SelectedDate.HasValue)
+            {
+                DateTime selectedStartDate = calendar.SelectedDates.First();
+                DateTime selectedEndDate = calendar.SelectedDates.Last();
+                FlightsHistoricList.ItemsSource = historicViewModel.GetFlightsHistoricByDateViewModel(selectedStartDate, selectedEndDate);
+            }
+      
+           
+
+        }
+
     }
 }
