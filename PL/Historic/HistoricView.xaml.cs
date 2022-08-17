@@ -43,8 +43,11 @@ namespace PL.Historic
 
         private void DeleteSelectedFlight_Click(object sender, RoutedEventArgs e)
         {
-            //FlightsHistoricList.SelectedItem
-           // historicViewModel.DeletFlightHistoricViewModel();
+            BE.FlightInfoPartial flightToDelete = null;
+
+            flightToDelete = FlightsHistoricList.SelectedItem as BE.FlightInfoPartial;
+           
+            historicViewModel.DeletFlightHistoricViewModel(flightToDelete.Id);
         }
 
         private void DeleteAllHistoric_Click(object sender, RoutedEventArgs e)
@@ -53,9 +56,21 @@ namespace PL.Historic
             historicViewModel.DeletFlightsHistoricViewModel(flight); ;
         }
 
-        private void _Calendar_SelectionModeChanged(object sender, EventArgs e)
-        {
+        //private void _Calendar_SelectionModeChanged(object sender, EventArgs e)
+        //{
+        //    var calendar = sender as Calendar;
 
+        //    if (calendar.SelectedDate.HasValue)
+        //    {
+        //        DateTime selectedStartDate = calendar.SelectedDates.First();
+        //        DateTime selectedEndDate = calendar.SelectedDates.Last();
+        //        FlightsHistoricList.ItemsSource = historicViewModel.GetFlightsHistoricByDateViewModel(selectedStartDate, selectedEndDate);
+        //    }
+      
+        //}
+
+        private void _Calendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+        {
             var calendar = sender as Calendar;
 
             if (calendar.SelectedDate.HasValue)
@@ -64,10 +79,6 @@ namespace PL.Historic
                 DateTime selectedEndDate = calendar.SelectedDates.Last();
                 FlightsHistoricList.ItemsSource = historicViewModel.GetFlightsHistoricByDateViewModel(selectedStartDate, selectedEndDate);
             }
-      
-           
-
         }
-
     }
 }

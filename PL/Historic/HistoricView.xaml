@@ -8,7 +8,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="170"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="200"/>
             <RowDefinition Height="*"/>
@@ -28,9 +28,10 @@
             </ListView.View>
 
         </ListView>
-        <Calendar x:Name="_Calendar" Width="170" Margin="18,31,0,0" VerticalAlignment="Top" FontWeight="SemiBold"
-                     FontSize="15" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" SelectionMode="SingleRange" SelectionModeChanged="_Calendar_SelectionModeChanged" Height="119" Grid.RowSpan="2"  />
+        <Calendar x:Name="_Calendar" Width="170" VerticalAlignment="Center" FontWeight="SemiBold"
+                     FontSize="15" Grid.Column="1" HorizontalAlignment="Left" SelectionMode="SingleRange" Height="150" SelectedDatesChanged="_Calendar_SelectedDatesChanged" DisplayMode="Month" />
 
+        <!--SelectionModeChanged="_Calendar_SelectionModeChanged"-->
 
         <!--<DatePicker x:Name="_datePicker"  Width="170" Margin="18,31,12,0" VerticalAlignment="Top" FontWeight="SemiBold"
                      FontSize="15" SelectedDateChanged="DatePicker_SelectedDateChanged" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left"/>-->
