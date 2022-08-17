@@ -37,17 +37,20 @@ namespace PL.Historic
 
         private void DisplayHistoric_Click(object sender, RoutedEventArgs e)
         {
+            FlightsHistoricList.ItemsSource = historicViewModel.GetFlightsHistoricViewModel();
 
         }
 
         private void DeleteSelectedFlight_Click(object sender, RoutedEventArgs e)
         {
 
+           // historicViewModel.DeletFlightHistoricViewModel();
         }
 
         private void DeleteAllHistoric_Click(object sender, RoutedEventArgs e)
         {
-
+            var flight =historicViewModel.GetFlightsHistoricViewModel();
+            historicViewModel.DeletFlightsHistoricViewModel(flight); ;
         }
 
         

@@ -27,8 +27,17 @@ namespace PL.Historic
             List<FlightInfoPartial> ListByDate = Flight.Where(x => x.DateAndTime > start && x.DateAndTime < end).ToList();
             return ListByDate;
         }
+        public void DeletFlightHistoricModel(int idFlight)
+        {
+            BL.DeleteFlight(idFlight);
+        }
 
-        
+        public void DeletFlightsHistoricModel(List<FlightInfoPartial> DeletFlight)
+        {
+            BL.DeleteFlights(DeletFlight);
+        }
+
+
 
     }
 }

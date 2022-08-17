@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PL.Historic
 {
-    public  class HistoricViewModel
+    public class HistoricViewModel
     {
         public HistoricModel HistoricModel { get; set; }
         public ObservableCollection<BE.FlightInfoPartial> HistoricFlights { get; set; }
@@ -22,8 +22,8 @@ namespace PL.Historic
 
         public List<BE.FlightInfoPartial> GetFlightsHistoricViewModel()
         {
-            var Flight=HistoricModel.GetFlightsHistoricModel();
-           
+            var Flight = HistoricModel.GetFlightsHistoricModel();
+
             return Flight;
         }
         public List<BE.FlightInfoPartial> GetFlightsHistoricByDateViewModel(DateTime start, DateTime end)
@@ -32,5 +32,15 @@ namespace PL.Historic
             return ListByDate;
         }
 
+        public void DeletFlightHistoricViewModel(int idFlight)
+        {
+            HistoricModel.DeletFlightHistoricModel(idFlight);
+        }
+
+        public void DeletFlightsHistoricViewModel(List<FlightInfoPartial> DeletFlight)
+        {
+            HistoricModel.DeletFlightsHistoricModel(DeletFlight);
+
+        }
     }
 }
