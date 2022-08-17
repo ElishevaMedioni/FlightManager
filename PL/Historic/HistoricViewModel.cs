@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,10 +10,22 @@ using System.Windows;
 
 namespace PL.Historic
 {
-    public class HistoricViewModel
+    public class HistoricViewModel : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
         public HistoricModel HistoricModel { get; set; }
-        public ObservableCollection<BE.FlightInfoPartial> HistoricFlights { get; set; }
+
+        private ObservableCollection<BE.FlightInfoPartial> historicFlights { get; set; }
+        public ObservableCollection<BE.FlightInfoPartial> HistoricFlights 
+        {
+            get { return historicFlights; }
+            set
+            {
+                historicFlights = value;
+                // Call OnPropertyChanged whenever the property is updated
+                OnPropertyChanged("historicFlights");
+            }
+        } 
 
 
         public HistoricViewModel()
@@ -20,6 +33,8 @@ namespace PL.Historic
             HistoricModel = new HistoricModel();
             HistoricFlights = new ObservableCollection<BE.FlightInfoPartial>();
         }
+
+       
 
         public List<BE.FlightInfoPartial> GetFlightsHistoricViewModel()
         {
@@ -50,5 +65,7 @@ namespace PL.Historic
             HistoricFlights.Clear();
 
         }
+        private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
     }
 }
