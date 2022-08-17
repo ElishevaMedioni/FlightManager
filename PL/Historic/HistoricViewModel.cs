@@ -32,7 +32,10 @@ namespace PL.Historic
         {
             HistoricModel = new HistoricModel();
             historicFlights = new ObservableCollection<BE.FlightInfoPartial>();
-            
+            var Flights = HistoricModel.GetFlightsHistoricModel();
+
+            HistoricFlights = new ObservableCollection<FlightInfoPartial>(Flights);
+
         }
 
        
@@ -40,8 +43,6 @@ namespace PL.Historic
         public List<BE.FlightInfoPartial> GetFlightsHistoricViewModel()
         {
             var Flights = HistoricModel.GetFlightsHistoricModel();
-            
-            HistoricFlights = new ObservableCollection<FlightInfoPartial>(Flights);
 
             return Flights;
         }

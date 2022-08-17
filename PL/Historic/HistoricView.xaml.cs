@@ -27,7 +27,7 @@ namespace PL.Historic
             historicViewModel = new HistoricViewModel();
             DataContext = historicViewModel;
 
-            FlightsHistoricList.ItemsSource = historicViewModel.GetFlightsHistoricViewModel();
+            FlightsHistoricList.ItemsSource = historicViewModel.HistoricFlights;
 
         }
         //private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
@@ -44,9 +44,8 @@ namespace PL.Historic
             {
                 _Calendar.SelectedDates.Clear();
             }
-            
-            FlightsHistoricList.ItemsSource = historicViewModel.GetFlightsHistoricViewModel();
 
+            FlightsHistoricList.ItemsSource = historicViewModel.HistoricFlights;
         }
 
         private void DeleteSelectedFlight_Click(object sender, RoutedEventArgs e)

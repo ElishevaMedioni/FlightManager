@@ -21,7 +21,7 @@
             <ColumnDefinition Width="15"/>
         </Grid.ColumnDefinitions>
 
-        <ListView x:Name="FlightsHistoricList" Margin="10,20,49,0" Grid.Column="3" Grid.RowSpan="4" VerticalAlignment="Top" Height="430" FontFamily="Candara" FontSize="16" ItemsSource="{Binding}" SelectionChanged="FlightsHistoricList_SelectionChanged" >
+        <ListView x:Name="FlightsHistoricList" Margin="10,20,49,0" Grid.Column="3" Grid.RowSpan="4" VerticalAlignment="Top" Height="430" FontFamily="Candara" FontSize="16" ItemsSource="{Binding HistoricFlights}" SelectionChanged="FlightsHistoricList_SelectionChanged" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn x:Name="FlightCode" Header="Flight Code 🔢" DisplayMemberBinding="{Binding FlightCode}" Width="Auto"/>
