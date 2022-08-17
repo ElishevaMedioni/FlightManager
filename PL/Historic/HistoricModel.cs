@@ -24,7 +24,9 @@ namespace PL.Historic
         public List<FlightInfoPartial> GetFlightsHistoricByDateModel(DateTime start, DateTime end)
         {
             var Flight = GetFlightsHistoricModel();
-            List<FlightInfoPartial> ListByDate = Flight.Where(x => x.DateAndTime > start && x.DateAndTime < end).ToList();
+            List<FlightInfoPartial> ListByDate = Flight
+                .Where(x => x.DateAndTime > start && x.DateAndTime < end.AddDays(1))
+                .ToList();
             return ListByDate;
         }
         public void DeletFlightHistoricModel(int idFlight)
