@@ -28,6 +28,12 @@ namespace PL.Historic
             DataContext = historicViewModel;
          
         }
+        private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DateTime selectedDate = _datePicker.SelectedDate.Value;
+            DateTime now= DateTime.Now;
+            FlightsHistoricList.ItemsSource = historicViewModel.GetFlightsHistoricByDateViewModel(selectedDate, now);
+        }
 
         //private void _datePicker_SelectionModeChanged(object sender, EventArgs e)
         //{
