@@ -17,6 +17,7 @@ using Microsoft.Maps.MapControl.WPF;
 using System.Collections.ObjectModel;
 using PL.FlightData;
 using System.Drawing;
+using System.IO;
 
 namespace PL.Flights
 {
@@ -167,7 +168,23 @@ namespace PL.Flights
             }
             return rotatedImage;
         }
-        
+
+        BitmapImage BitmapToImageSource(Bitmap bitmap)
+        {
+            using (MemoryStream memory = new MemoryStream())
+            {
+                bitmap.Save(memory, System.Drawing.Imaging.ImageFormat.Bmp);
+                memory.Position = 0;
+                BitmapImage bitmapimage = new BitmapImage();
+                bitmapimage.BeginInit();
+                bitmapimage.StreamSource = memory;
+                bitmapimage.CacheOption = BitmapCacheOption.OnLoad;
+                bitmapimage.EndInit();
+
+                return bitmapimage;
+            }
+        }
+
 
         private void UpdateFlight(BE.FlightInfoPartial selected)
         {
@@ -197,8 +214,9 @@ namespace PL.Flights
                 float angle = (float)angleForPlanePushPin;
 
                 Bitmap iconRotated = RotateImage(new Bitmap("C:\\Users\\zeevm\\source\\repos\\FlightManager\\PL\\Images\\airplaneUpLeft.png"), angle);
+                //imgTest.Source = BitmapToImageSource(iconRotated);
                 //
-                
+
                 BE.Trail CurrentPlace = null;
                 
                 

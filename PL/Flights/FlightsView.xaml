@@ -101,6 +101,7 @@
         <!-- get your own key from https://www.bingmapsportal.com/ -->
         <m:Map x:Name="myMap" CredentialsProvider="Am7ABZsl1hVs093AjZV82C3wxd-NCQ-KtBLpdtv4uB1UBvqIx7vcgN7Dw1A9RpQt"          
                Center="32.000454,34.870743" ZoomLevel="5.0" AnimationLevel="None" Margin="15,0,10,50" Grid.Column="2" Grid.RowSpan="7" Grid.Row="1"   >
+            
             <!--<m:Pushpin MouseDoubleClick="Pushpin_MouseDoubleClick" MouseEnter="Pushpin_MouseEnter"/>-->
 
         </m:Map>
@@ -127,5 +128,6 @@
                 </Style>
             </Button.Resources>
         </Button>
+        <Image x:Name="imgTest" Grid.Column="2" HorizontalAlignment="Left" Height="100" Margin="31,-2,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="100"/>
     </Grid>
 </UserControl>
