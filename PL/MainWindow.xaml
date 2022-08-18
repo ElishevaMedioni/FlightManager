@@ -23,17 +23,13 @@
 
         <!--<Button Content="Start Track" HorizontalAlignment="Left" Height="33" Margin="646,10,0,0" VerticalAlignment="Top" Width="126" Click="Button_Click_1" Grid.Column="2"/>-->
 
-
         <UserControl x:Name="MainUC" Grid.Column="1" >
 
             <UserControl.Resources>
                 <ResourceDictionary>
-                    
                 </ResourceDictionary>
             </UserControl.Resources>
             
-
-
         </UserControl>
 
         <Grid Grid.Column="0" Background="#FFF0F7F9" >
@@ -72,51 +68,13 @@
                     <Button Content="⛔ Exit" Padding="15,0,0,0" FontWeight="Bold" Width="169"  HorizontalContentAlignment="Left" Grid.IsSharedSizeScope="True" BorderBrush="{x:Null}" Background="{x:Null}" FontFamily="Cantara" Margin="0,0,0,-0.4" Height="50" VerticalAlignment="Top" Click="ExitButton_Click" FontSize="24"  />
                 </StackPanel>
             </Grid>
-
-
-
-
         </Grid>
-
-
-        <!--<StackPanel x:Name="menuUC" Grid.Column="0" Width="120" Margin="5,117,5,-117" >
-            <StackPanel.Resources>
-                <Style TargetType="{x:Type Button}">
-                    <Setter Property="Margin" Value="0,10,0,0"/>
-                </Style>
-            </StackPanel.Resources>
-            <Button Content="✈️ Flights" Height="60" x:Name="FlightsButton" Click="FlightsButton_Click">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="5"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
-            <Button Content="📋 Historic" Height="60" x:Name="HistoricButton" Click="historicButton_Click">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="5"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
-
-            <Button Content="⛔ Exit" Height="60" x:Name="ExitButton" Click="ExitButton_Click" VerticalAlignment="Bottom">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="5"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
-        </StackPanel>-->
-
 
         <Rectangle HorizontalAlignment="Center" Height="129" Margin="0,32,0,0" VerticalAlignment="Top" Width="170">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="/TrackMyFlight.png"/>
             </Rectangle.Fill>
         </Rectangle>
-
-
 
     </Grid>
 </Window>
