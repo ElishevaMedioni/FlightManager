@@ -58,9 +58,9 @@
                 <StackPanel Orientation="Horizontal">
                     <Button Content="❌ Delete" Padding="15,0,0,0" Width="180"  HorizontalContentAlignment="Left" Grid.IsSharedSizeScope="True" 
                                 BorderBrush="{x:Null}" Background="{x:Null}" 
-                                FontFamily="Cantara" 
-                                 Command="{Binding DeleteFlightCommand}" CommandParameter="{Binding}" FontSize="24"/>
-                    <!--Click="DeleteSelectedFlight_Click"-->
+                                FontFamily="Cantara" Click="DeleteSelectedFlight_Click"
+                                  FontSize="24"/>
+                    <!---->
                 </StackPanel>
             </Grid>
 
@@ -69,7 +69,8 @@
                     <Button Content="🗑️ Delete All" Padding="15,0,0,0" Width="180"  HorizontalContentAlignment="Left" Grid.IsSharedSizeScope="True" 
                                 BorderBrush="{x:Null}" Background="{x:Null}" 
                                 FontFamily="Cantara" 
-                                Click="DeleteAllHistoric_Click" FontSize="24"/>
+                                 Command="{Binding DeleteFlightCommand}" CommandParameter="{Binding}" FontSize="24"/>
+                    <!--Click="DeleteAllHistoric_Click"-->
                 </StackPanel>
             </Grid>
 

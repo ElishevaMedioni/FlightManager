@@ -48,37 +48,26 @@ namespace PL.Historic
             FlightsHistoricList.ItemsSource = historicViewModel.HistoricFlights;
         }
 
-        //private void DeleteSelectedFlight_Click(object sender, RoutedEventArgs e)
-        //{
-        //    BE.FlightInfoPartial flightToDelete = FlightsHistoricList.SelectedItem as BE.FlightInfoPartial;
-        //   if (flightToDelete==null)
-        //    {
-        //        MessageBox.Show("You didn't select a flight to delete.");
-        //    }
-        //   else
-        //        historicViewModel.DeleteFlightHistoricViewModel(flightToDelete.Id);
-        //    FlightsHistoricList.ItemsSource = historicViewModel.HistoricFlights;
-        //}
-
-        private void DeleteAllHistoric_Click(object sender, RoutedEventArgs e)
+        private void DeleteSelectedFlight_Click(object sender, RoutedEventArgs e)
         {
-            var flight =historicViewModel.GetFlightsHistoricViewModel();
-            historicViewModel.DeleteFlightsHistoricViewModel(flight); ;
+            BE.FlightInfoPartial flightToDelete = FlightsHistoricList.SelectedItem as BE.FlightInfoPartial;
+            if (flightToDelete == null)
+            {
+                MessageBox.Show("You didn't select a flight to delete.");
+            }
+            else
+                historicViewModel.DeleteFlightHistoricViewModel(flightToDelete.Id);
             FlightsHistoricList.ItemsSource = historicViewModel.HistoricFlights;
         }
 
-        //private void _Calendar_SelectionModeChanged(object sender, EventArgs e)
+        //private void DeleteAllHistoric_Click(object sender, RoutedEventArgs e)
         //{
-        //    var calendar = sender as Calendar;
-
-        //    if (calendar.SelectedDate.HasValue)
-        //    {
-        //        DateTime selectedStartDate = calendar.SelectedDates.First();
-        //        DateTime selectedEndDate = calendar.SelectedDates.Last();
-        //        FlightsHistoricList.ItemsSource = historicViewModel.GetFlightsHistoricByDateViewModel(selectedStartDate, selectedEndDate);
-        //    }
-      
+        //    var flight =historicViewModel.GetFlightsHistoricViewModel();
+        //    historicViewModel.DeleteFlightsHistoricViewModel(flight); ;
+        //    FlightsHistoricList.ItemsSource = historicViewModel.HistoricFlights;
         //}
+
+        
 
         private void _Calendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
