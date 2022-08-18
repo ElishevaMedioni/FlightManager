@@ -96,6 +96,8 @@ namespace PL.Flights
 
         private void ViewAllFlights()
         {
+            allflight.Visibility = Visibility.Hidden;
+
             var FlightKeys = flightsViewModel.FlightKeys;
             foreach (var Flight in FlightKeys["Incoming"])
                 PinCurrentFlight(Flight);
@@ -120,6 +122,7 @@ namespace PL.Flights
                 BE.WeatherRoot weatherRoot = flightsViewModel.GetWeatherWithLatLongViewModel(Flight.airport.destination.position.latitude.ToString(), Flight.airport.destination.position.longitude.ToString());
                 flightDataView = new FlightDataView(Flight,weatherRoot);
                 FlightData.Content = flightDataView;
+                allflight.Visibility = Visibility.Visible;
             }
 
 
@@ -142,9 +145,14 @@ namespace PL.Flights
                 addNewPolyLine(OrderedPlaces);
 
                 BE.Trail CurrentPlace = null;
+                
+                
 
                 Pushpin PinCurrent = new Pushpin { ToolTip = selected.FlightCode };
                 Pushpin PinOrigin = new Pushpin { ToolTip = Flight.airport.origin.name };
+                
+                PinOrigin.Background = Brushes.HotPink;
+
                 Pushpin PinDestination = new Pushpin { ToolTip = Flight.airport.destination.name };
 
                 PinCurrent.MouseDoubleClick += Pushpin_MouseDoubleClick;
@@ -264,7 +272,7 @@ namespace PL.Flights
         private void allflight_Click(object sender, RoutedEventArgs e)
         {
             myMap.Children.Clear();
-            //Window.GetWindow(FlightData).Close();
+            FlightData.Visibility = Visibility.Hidden;
             ViewAllFlights();
         }
     }

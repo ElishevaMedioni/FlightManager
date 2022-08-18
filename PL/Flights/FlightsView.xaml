@@ -10,7 +10,7 @@
              xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
              xmlns:FlightData="clr-namespace:PL.FlightData" x:Class="PL.Flights.FlightsView" x:Name="FlightsUC"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" Background="White">
+             d:DesignHeight="551.743" d:DesignWidth="865.269" Background="White" Height="Auto" Width="Auto">
     <UserControl.Resources>
         <ResourceDictionary>
             <Style TargetType="{x:Type m:Pushpin}" x:Key="FromIsrael">
@@ -112,6 +112,12 @@
         <TextBlock x:Name="date" HorizontalAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="50" Grid.Row="1" FontFamily="Candara" FontSize="16" Margin="0,50,0,0" FontWeight="Bold" Grid.Column="1"/>
         <TextBlock x:Name="dateheb" HorizontalAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="50" FontFamily="Candara" FontSize="18" FontWeight="Bold" Grid.Row="1" Grid.Column="1"/>
         <UserControl x:Name="FlightData" Grid.Column="2" Margin="295,50,10,50" Grid.Row="1" Grid.RowSpan="6"/>
-        <Button x:Name="allflight" Grid.Column="2" Content="allflight" HorizontalAlignment="Left" Margin="37,15,0,0" Grid.Row="1" VerticalAlignment="Top" Click="allflight_Click"/>
+        <Button x:Name="allflight" Grid.Column="2" Content="🔃 All Flights" HorizontalAlignment="Left" Margin="37,15,0,0" Grid.Row="1" VerticalAlignment="Top" Click="allflight_Click" Height="40" Width="95" Background="#FFF4E3F2" Visibility="Hidden">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
     </Grid>
 </UserControl>

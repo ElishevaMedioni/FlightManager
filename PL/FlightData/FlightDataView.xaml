@@ -57,9 +57,8 @@
                 <TextBlock Text="{Binding airport.destination.name}"></TextBlock>
                 <TextBlock Text="{Binding airport.destination.position.country.name, StringFormat='🛬 {0}'}"></TextBlock>
                 <TextBlock Text="{Binding status.text, StringFormat='Status: {0}'}"></TextBlock>
-                <TextBlock Text="{Binding time.estimated.arrival, StringFormat='⌚ {0}',Converter={StaticResource TickConvert}}"></TextBlock>
-
-                <TextBlock Text="{Binding time.scheduled.arrival, StringFormat='⌚ {0}',Converter={StaticResource TickConvert}}"></TextBlock>
+                <TextBlock Text="{Binding time.estimated.arrival, StringFormat='⌚Estimated {0}',Converter={StaticResource TickConvert}}"></TextBlock>
+                <TextBlock Text="{Binding time.scheduled.arrival, StringFormat='⌚Scheduled {0}',Converter={StaticResource TickConvert}}"></TextBlock>
 
 
             </StackPanel>
