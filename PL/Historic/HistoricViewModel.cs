@@ -1,4 +1,5 @@
 ﻿using BE;
+using PL.Commands;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 
 namespace PL.Historic
 {
@@ -38,7 +40,14 @@ namespace PL.Historic
 
         }
 
-       
+        public ICommand DeleteFlightCommand
+        {
+            get
+            {
+                return new DeleteFlightCommand(this);
+            }
+        }
+
 
         public List<BE.FlightInfoPartial> GetFlightsHistoricViewModel()
         {
