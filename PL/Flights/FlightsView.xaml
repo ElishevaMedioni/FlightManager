@@ -105,7 +105,7 @@
 
         </m:Map>
         <!--<Button Content="Start Track" HorizontalAlignment="Left" Height="33" Margin="646,10,0,0" VerticalAlignment="Top" Width="126" Click="Button_Click_1" Grid.Column="2"/>-->
-        <TextBox x:Name="Counter" HorizontalAlignment="Left" Margin="777,15,0,10" TextWrapping="Wrap" Text="1" Width="45" Grid.Column="2"/>
+        <TextBox x:Name="Counter" HorizontalAlignment="Left" Margin="166,75,0,0" TextWrapping="Wrap" Text="1" Width="29" Grid.Column="1" Grid.Row="1"/>
 
 
 
@@ -113,6 +113,14 @@
         <TextBlock x:Name="dateheb" HorizontalAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="50" FontFamily="Candara" FontSize="18" FontWeight="Bold" Grid.Row="1" Grid.Column="1"/>
         <UserControl x:Name="FlightData" Grid.Column="2" Margin="295,50,10,50" Grid.Row="1" Grid.RowSpan="6"/>
         <Button x:Name="allflight" Grid.Column="2" Content="🔃 All Flights" HorizontalAlignment="Left" Margin="37,15,0,0" Grid.Row="1" VerticalAlignment="Top" Click="allflight_Click" Height="40" Width="95" Background="#FFF4E3F2" Visibility="Hidden">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button x:Name="track" Grid.Column="2" Content="▶️ Start Track" HorizontalAlignment="Left" Margin="149,15,0,0" Grid.Row="1" VerticalAlignment="Top" Height="40" Width="95" Background="#FFF4E3F2" Visibility="Hidden" Click="track_Click">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="7"/>

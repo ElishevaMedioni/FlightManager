@@ -210,6 +210,12 @@
   <ItemGroup>
     <Resource Include="iconApp2.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\backgroundMainWin.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="backgroundMainWin.jpeg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

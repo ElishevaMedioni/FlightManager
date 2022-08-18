@@ -32,11 +32,11 @@ namespace PL.Flights
             InitializeComponent();
             flightsViewModel = new FlightsViewModel();
             DataContext = flightsViewModel;
-            getAllflightToMap();
+            GetAllflightToMap();
             
         }
 
-        private void getAllflightToMap()
+        private void GetAllflightToMap()
         {
             //load current
             Dictionary<string, IEnumerable<BE.FlightInfoPartial>> FlightKeys= flightsViewModel.FlightKeys;
@@ -47,8 +47,8 @@ namespace PL.Flights
                 PinCurrentFlight(Flight);
             foreach (var Flight in FlightKeys["Outgoing"])
                 PinCurrentFlight(Flight);
-            dateHoliday();
-            getdateheb();
+            DateHoliday();
+            GetDateHeb();
 
 
         }
@@ -97,6 +97,7 @@ namespace PL.Flights
         private void ViewAllFlights()
         {
             allflight.Visibility = Visibility.Hidden;
+            track.Visibility = Visibility.Hidden;
 
             var FlightKeys = flightsViewModel.FlightKeys;
             foreach (var Flight in FlightKeys["Incoming"])
@@ -122,7 +123,9 @@ namespace PL.Flights
                 BE.WeatherRoot weatherRoot = flightsViewModel.GetWeatherWithLatLongViewModel(Flight.airport.destination.position.latitude.ToString(), Flight.airport.destination.position.longitude.ToString());
                 flightDataView = new FlightDataView(Flight,weatherRoot);
                 FlightData.Content = flightDataView;
+                
                 allflight.Visibility = Visibility.Visible;
+                track.Visibility = Visibility.Visible;
             }
 
 
@@ -222,7 +225,7 @@ namespace PL.Flights
             }
         }
 
-        private void dateHoliday()
+        private void DateHoliday()
         {
 
             DateTime start = DateTime.Now;
@@ -237,7 +240,7 @@ namespace PL.Flights
 
             }
         }
-        private void getdateheb()
+        private void GetDateHeb()
         {
             DateTime today = DateTime.Now;
             dateheb.Text = "📆 " + today.ToString()+ "\n🗓 " + flightsViewModel.GetdateViewModel(today).ToString();
@@ -274,6 +277,34 @@ namespace PL.Flights
             myMap.Children.Clear();
             FlightData.Visibility = Visibility.Hidden;
             ViewAllFlights();
+        }
+
+        private void track_Click(object sender, RoutedEventArgs e)
+        {
+            DispatcherTimer dispatcherTimer = new DispatcherTimer();
+            dispatcherTimer.Tick += DispatcherTimer_Tick;
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 15);
+            dispatcherTimer.Start();
+        }
+
+        private void DispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            BE.FlightInfoPartial selectedFlight1 = InFlightsListBox.SelectedItem as BE.FlightInfoPartial;
+            BE.FlightInfoPartial selectedFlight2 = OutFlightsListBox.SelectedItem as BE.FlightInfoPartial;
+
+            if (selectedFlight1 != null)
+            {
+                UpdateFlight(selectedFlight1);
+                Counter.Text = (Convert.ToInt32(Counter.Text) + 1).ToString();
+            }
+            else
+                if (selectedFlight2 != null)
+            {
+                UpdateFlight(selectedFlight2);
+                Counter.Text = (Convert.ToInt32(Counter.Text) + 1).ToString();
+            }
+            
+            
         }
     }
 }

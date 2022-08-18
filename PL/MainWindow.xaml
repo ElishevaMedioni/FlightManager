@@ -28,27 +28,10 @@
 
             <UserControl.Resources>
                 <ResourceDictionary>
-                    <Style TargetType="m:Pushpin" x:Key="FromIsrael">
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate>
-                                    <Image Source="C:\Users\zeevm\source\repos\FlightManager\PL\Images\airplaneUpLeft.png"  />
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-
-                    </Style>
-                    <Style TargetType="m:Pushpin" x:Key="ToIsrael">
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate>
-                                    <Image Source="C:\Users\zeevm\source\repos\FlightManager\PL\Images\airplaneUpRight.png"/>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
+                    
                 </ResourceDictionary>
             </UserControl.Resources>
+            
 
 
         </UserControl>
@@ -74,7 +57,7 @@
                 <Grid Height="50" Margin="0,10,0,0" >
                     <StackPanel Orientation="Horizontal">
 
-                        <Button Content="📋 Historic" Padding="15,0,0,0" FontWeight="Bold" Width="169"  HorizontalContentAlignment="Left" Grid.IsSharedSizeScope="True" 
+                        <Button Content="📋 History" Padding="15,0,0,0" FontWeight="Bold" Width="169"  HorizontalContentAlignment="Left" Grid.IsSharedSizeScope="True" 
                                 BorderBrush="{x:Null}" Background="{x:Null}" 
                                 FontFamily="Cantara" 
                                 Click="historicButton_Click" FontSize="24"/>
