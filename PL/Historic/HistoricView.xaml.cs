@@ -48,17 +48,17 @@ namespace PL.Historic
             FlightsHistoricList.ItemsSource = historicViewModel.HistoricFlights;
         }
 
-        private void DeleteSelectedFlight_Click(object sender, RoutedEventArgs e)
-        {
-            BE.FlightInfoPartial flightToDelete = FlightsHistoricList.SelectedItem as BE.FlightInfoPartial;
-           if (flightToDelete==null)
-            {
-                MessageBox.Show("You didn't select a flight to delete.");
-            }
-           else
-                historicViewModel.DeleteFlightHistoricViewModel(flightToDelete.Id);
-            FlightsHistoricList.ItemsSource = historicViewModel.HistoricFlights;
-        }
+        //private void DeleteSelectedFlight_Click(object sender, RoutedEventArgs e)
+        //{
+        //    BE.FlightInfoPartial flightToDelete = FlightsHistoricList.SelectedItem as BE.FlightInfoPartial;
+        //   if (flightToDelete==null)
+        //    {
+        //        MessageBox.Show("You didn't select a flight to delete.");
+        //    }
+        //   else
+        //        historicViewModel.DeleteFlightHistoricViewModel(flightToDelete.Id);
+        //    FlightsHistoricList.ItemsSource = historicViewModel.HistoricFlights;
+        //}
 
         private void DeleteAllHistoric_Click(object sender, RoutedEventArgs e)
         {
