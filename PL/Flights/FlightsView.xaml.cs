@@ -16,6 +16,7 @@ using System.Windows.Threading;
 using Microsoft.Maps.MapControl.WPF;
 using System.Collections.ObjectModel;
 using PL.FlightData;
+using System.Drawing;
 
 namespace PL.Flights
 {
@@ -131,6 +132,43 @@ namespace PL.Flights
 
         }
 
+        
+        private double angleFromCoordinate(double lat1, double long1, double lat2,
+        double long2)
+        {
+
+            double dLon = (long2 - long1);
+
+            double y = Math.Sin(dLon) * Math.Cos(lat2);
+            double x = Math.Cos(lat1) * Math.Sin(lat2) - Math.Sin(lat1)
+                    * Math.Cos(lat2) * Math.Cos(dLon);
+
+            double brng = Math.Atan2(y, x);
+
+            brng = (180 / Math.PI) * brng;
+            brng = (brng + 360) % 360;
+            brng = 360 - brng; // count degrees counter-clockwise - remove to make clockwise
+
+            return brng;
+        }
+
+        private Bitmap RotateImage(Bitmap bmp, float angle)
+        {
+            float height = bmp.Height;
+            float width = bmp.Width;
+            int hypotenuse = System.Convert.ToInt32(System.Math.Floor(Math.Sqrt(height * height + width * width)));
+            Bitmap rotatedImage = new Bitmap(hypotenuse, hypotenuse);
+            using (Graphics g = Graphics.FromImage(rotatedImage))
+            {
+                g.TranslateTransform((float)rotatedImage.Width / 2, (float)rotatedImage.Height / 2); //set the rotation point as the center into the matrix
+                g.RotateTransform(angle); //rotate
+                g.TranslateTransform(-(float)rotatedImage.Width / 2, -(float)rotatedImage.Height / 2); //restore rotation point into the matrix
+                g.DrawImage(bmp, (hypotenuse - width) / 2, (hypotenuse - height) / 2, width, height);
+            }
+            return rotatedImage;
+        }
+        
+
         private void UpdateFlight(BE.FlightInfoPartial selected)
         {
             var Flight = flightsViewModel.GetFlightDataViewModel(selected);
@@ -145,8 +183,22 @@ namespace PL.Flights
                                                 orderby f.ts
                                                 select f).ToList<BE.Trail>();
 
+                
+
                 addNewPolyLine(OrderedPlaces);
 
+                //code to rotate the plane
+                double angleForPlanePushPin = angleFromCoordinate(
+                    Flight.airport.destination.position.latitude,
+                    Flight.airport.destination.position.longitude,
+                    Flight.airport.origin.position.latitude,
+                    Flight.airport.origin.position.longitude);
+
+                float angle = (float)angleForPlanePushPin;
+
+                Bitmap iconRotated = RotateImage(new Bitmap("C:\\Users\\zeevm\\source\\repos\\FlightManager\\PL\\Images\\airplaneUpLeft.png"), angle);
+                //
+                
                 BE.Trail CurrentPlace = null;
                 
                 
@@ -154,7 +206,7 @@ namespace PL.Flights
                 Pushpin PinCurrent = new Pushpin { ToolTip = selected.FlightCode };
                 Pushpin PinOrigin = new Pushpin { ToolTip = Flight.airport.origin.name };
                 
-                PinOrigin.Background = Brushes.HotPink;
+                PinOrigin.Background = System.Windows.Media.Brushes.HotPink;
 
                 Pushpin PinDestination = new Pushpin { ToolTip = Flight.airport.destination.name };
 
