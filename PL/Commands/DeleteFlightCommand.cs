@@ -25,7 +25,6 @@ namespace PL.Commands
         public void Execute(object parameter)
         {
             HistoricViewModel historicViewModel = parameter as HistoricViewModel;
-            historicViewModel.HistoricFlights.Clear();
             var flight = historicViewModel.GetFlightsHistoricViewModel();
             historicViewModel.DeleteFlightsHistoricViewModel(flight);
         }
