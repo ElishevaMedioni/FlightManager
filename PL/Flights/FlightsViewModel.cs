@@ -1,24 +1,45 @@
 ﻿using BE;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace PL.Flights
 {
-    public class FlightsViewModel
+    public class FlightsViewModel: INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
         public FlightsModel FlightsModel { get; set; }
+
+        private Dictionary<string, IEnumerable<BE.FlightInfoPartial>> flightKeys { get; set; }
+        public Dictionary<string, IEnumerable<BE.FlightInfoPartial>> FlightKeys
+        {
+            get { return flightKeys; }
+            set
+            {
+                flightKeys = value;
+                // Call OnPropertyChanged whenever the property is updated
+                OnPropertyChanged("flightKeys");
+            }
+        }
+
+        
         public FlightsViewModel()
         {
             FlightsModel = new FlightsModel();
+            flightKeys = new Dictionary<string, IEnumerable<BE.FlightInfoPartial>>();
+            var Flights = FlightsModel.GetAllFlightsModel();
+
+            FlightKeys = new Dictionary<string, IEnumerable<BE.FlightInfoPartial>>(Flights);
         }
 
-        public Dictionary<string, IEnumerable<BE.FlightInfoPartial>> getAllFlightsViewModel()
-        {
-            return FlightsModel.GetAllFlightsModel();
-        }
+        //public Dictionary<string, IEnumerable<BE.FlightInfoPartial>> getAllFlightsViewModel()
+        //{
+        //    return FlightsModel.GetAllFlightsModel();
+        //}
 
         public FlightRoot GetFlightDataViewModel(FlightInfoPartial flightInfoPartial)
         {
@@ -41,5 +62,7 @@ namespace PL.Flights
         {
             return FlightsModel.Getdate(date);
         }
+        private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
     }
 }

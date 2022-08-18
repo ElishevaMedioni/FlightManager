@@ -39,7 +39,7 @@ namespace PL.Flights
         private void getAllflightToMap()
         {
             //load current
-            Dictionary<string, IEnumerable<BE.FlightInfoPartial>> FlightKeys= flightsViewModel.getAllFlightsViewModel();
+            Dictionary<string, IEnumerable<BE.FlightInfoPartial>> FlightKeys= flightsViewModel.FlightKeys;
 
             InFlightsListBox.DataContext = FlightKeys["Incoming"];
             OutFlightsListBox.DataContext = FlightKeys["Outgoing"];
@@ -96,7 +96,7 @@ namespace PL.Flights
 
         private void ViewAllFlights()
         {
-            var FlightKeys = flightsViewModel.getAllFlightsViewModel();
+            var FlightKeys = flightsViewModel.FlightKeys;
             foreach (var Flight in FlightKeys["Incoming"])
                 PinCurrentFlight(Flight);
             foreach (var Flight in FlightKeys["Outgoing"])
@@ -259,6 +259,12 @@ namespace PL.Flights
                 flightDataView = new FlightDataView(Flight, weatherRoot);
                 FlightData.Content = flightDataView;
             }
+        }
+
+        private void allflight_Click(object sender, RoutedEventArgs e)
+        {
+            myMap.Children.Clear();
+            ViewAllFlights();
         }
     }
 }
