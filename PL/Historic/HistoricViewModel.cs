@@ -74,7 +74,7 @@ namespace PL.Historic
 
         public void DeleteFlightsHistoricViewModel(List<FlightInfoPartial> DeletFlight)
         {
-            HistoricModel.DeleteFlightsHistoricModel(DeletFlight);
+            //HistoricModel.DeleteFlightsHistoricModel(DeletFlight);
             historicFlights.Clear();
 
         }
