@@ -24,15 +24,10 @@ namespace PL.Commands
 
         public void Execute(object parameter)
         {
-            BE.FlightInfoPartial flightToDelete = parameter as BE.FlightInfoPartial;
-            if (flightToDelete == null)
-            {
-                MessageBox.Show("You didn't select a flight to delete.");
-            }
-            else
-                historicVM.DeleteFlightHistoricViewModel(flightToDelete.Id);
-
-            
+            HistoricViewModel historicViewModel = parameter as HistoricViewModel;
+            var flightToDelete = historicViewModel.HistoricFlights;
+            var flight = historicViewModel.GetFlightsHistoricViewModel();
+            historicViewModel.DeleteFlightsHistoricViewModel(flight); ;
         }
 
         public HistoricViewModel historicVM { get; set; }
