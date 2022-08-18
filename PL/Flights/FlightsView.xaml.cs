@@ -264,6 +264,7 @@ namespace PL.Flights
         private void allflight_Click(object sender, RoutedEventArgs e)
         {
             myMap.Children.Clear();
+            //Window.GetWindow(FlightData).Close();
             ViewAllFlights();
         }
     }

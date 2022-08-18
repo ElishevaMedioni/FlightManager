@@ -36,10 +36,6 @@ namespace PL.Flights
             FlightKeys = new Dictionary<string, IEnumerable<BE.FlightInfoPartial>>(Flights);
         }
 
-        //public Dictionary<string, IEnumerable<BE.FlightInfoPartial>> getAllFlightsViewModel()
-        //{
-        //    return FlightsModel.GetAllFlightsModel();
-        //}
 
         public FlightRoot GetFlightDataViewModel(FlightInfoPartial flightInfoPartial)
         {
