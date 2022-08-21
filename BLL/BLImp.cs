@@ -17,7 +17,7 @@ namespace BLL
    
         HelperClass Helper = new HelperClass();
 
-        Dictionary<string, IEnumerable<BE.FlightInfoPartial>> flightOutAndIn = new Dictionary<string, IEnumerable<BE.FlightInfoPartial>>(); //Belongs to BL
+        Dictionary<string, IEnumerable<BE.FlightInfoPartial>> flightOutAndIn = new Dictionary<string, IEnumerable<BE.FlightInfoPartial>>();
         public IDAL dal { get; set; }
         public BLImp()
         {
@@ -67,7 +67,6 @@ namespace BLL
         }
 
 
-
         public bool ClearAllListFlights()
         {
             flightOutAndIn.Clear();
@@ -98,7 +97,6 @@ namespace BLL
             }
 
             return Info;
-
         }
 
 
@@ -119,7 +117,6 @@ namespace BLL
                 }
             }
             return false;
-
         }
 
         public DateRoot GetDate(DateTime date)

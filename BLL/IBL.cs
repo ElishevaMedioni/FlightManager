@@ -32,7 +32,7 @@ namespace BLL
         #region Date
         bool GetHoliday();
         DateRoot GetDate(DateTime date);
-        #endregion date
+        #endregion Date
 
 
 

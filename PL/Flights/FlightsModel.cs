@@ -40,7 +40,7 @@ namespace PL.Flights
         {
             return BL.GetHoliday();
         }
-        public DateRoot Getdate(DateTime date)
+        public DateRoot GetDateModel(DateTime date)
         {
             return BL.GetDate(date);
         }

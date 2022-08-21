@@ -54,9 +54,9 @@ namespace PL.Flights
         {
             return FlightsModel.GetHolidayModel();
         }
-        public DateRoot GetdateViewModel(DateTime date)
+        public DateRoot GetDateViewModel(DateTime date)
         {
-            return FlightsModel.Getdate(date);
+            return FlightsModel.GetDateModel(date);
         }
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 

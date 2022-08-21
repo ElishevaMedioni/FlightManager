@@ -29,16 +29,18 @@ namespace PL.Flights
 
         public FlightsViewModel flightsViewModel;
         private FlightDataView flightDataView;
+        
+        DispatcherTimer dispatcherTimer = new DispatcherTimer();
         public FlightsView()
         {
             InitializeComponent();
             flightsViewModel = new FlightsViewModel();
             DataContext = flightsViewModel;
-            GetAllflightToMap();
+            GetAllFlightsToMap();
             
         }
 
-        private void GetAllflightToMap()
+        private void GetAllFlightsToMap()
         {
             //load current
             Dictionary<string, IEnumerable<BE.FlightInfoPartial>> FlightKeys= flightsViewModel.FlightKeys;
@@ -126,6 +128,7 @@ namespace PL.Flights
                 flightDataView = new FlightDataView(Flight,weatherRoot);
                 FlightData.Content = flightDataView;
                 
+                FlightData.Visibility = Visibility.Visible;
                 allflight.Visibility = Visibility.Visible;
                 track.Visibility = Visibility.Visible;
             }
@@ -134,56 +137,56 @@ namespace PL.Flights
         }
 
         
-        private double angleFromCoordinate(double lat1, double long1, double lat2,
-        double long2)
-        {
+        //private double angleFromCoordinate(double lat1, double long1, double lat2,
+        //double long2)
+        //{
 
-            double dLon = (long2 - long1);
+        //    double dLon = (long2 - long1);
 
-            double y = Math.Sin(dLon) * Math.Cos(lat2);
-            double x = Math.Cos(lat1) * Math.Sin(lat2) - Math.Sin(lat1)
-                    * Math.Cos(lat2) * Math.Cos(dLon);
+        //    double y = Math.Sin(dLon) * Math.Cos(lat2);
+        //    double x = Math.Cos(lat1) * Math.Sin(lat2) - Math.Sin(lat1)
+        //            * Math.Cos(lat2) * Math.Cos(dLon);
 
-            double brng = Math.Atan2(y, x);
+        //    double brng = Math.Atan2(y, x);
 
-            brng = (180 / Math.PI) * brng;
-            brng = (brng + 360) % 360;
-            brng = 360 - brng; // count degrees counter-clockwise - remove to make clockwise
+        //    brng = (180 / Math.PI) * brng;
+        //    brng = (brng + 360) % 360;
+        //    brng = 360 - brng; // count degrees counter-clockwise - remove to make clockwise
 
-            return brng;
-        }
+        //    return brng;
+        //}
 
-        private Bitmap RotateImage(Bitmap bmp, float angle)
-        {
-            float height = bmp.Height;
-            float width = bmp.Width;
-            int hypotenuse = System.Convert.ToInt32(System.Math.Floor(Math.Sqrt(height * height + width * width)));
-            Bitmap rotatedImage = new Bitmap(hypotenuse, hypotenuse);
-            using (Graphics g = Graphics.FromImage(rotatedImage))
-            {
-                g.TranslateTransform((float)rotatedImage.Width / 2, (float)rotatedImage.Height / 2); //set the rotation point as the center into the matrix
-                g.RotateTransform(angle); //rotate
-                g.TranslateTransform(-(float)rotatedImage.Width / 2, -(float)rotatedImage.Height / 2); //restore rotation point into the matrix
-                g.DrawImage(bmp, (hypotenuse - width) / 2, (hypotenuse - height) / 2, width, height);
-            }
-            return rotatedImage;
-        }
+        //private Bitmap RotateImage(Bitmap bmp, float angle)
+        //{
+        //    float height = bmp.Height;
+        //    float width = bmp.Width;
+        //    int hypotenuse = System.Convert.ToInt32(System.Math.Floor(Math.Sqrt(height * height + width * width)));
+        //    Bitmap rotatedImage = new Bitmap(hypotenuse, hypotenuse);
+        //    using (Graphics g = Graphics.FromImage(rotatedImage))
+        //    {
+        //        g.TranslateTransform((float)rotatedImage.Width / 2, (float)rotatedImage.Height / 2); //set the rotation point as the center into the matrix
+        //        g.RotateTransform(angle); //rotate
+        //        g.TranslateTransform(-(float)rotatedImage.Width / 2, -(float)rotatedImage.Height / 2); //restore rotation point into the matrix
+        //        g.DrawImage(bmp, (hypotenuse - width) / 2, (hypotenuse - height) / 2, width, height);
+        //    }
+        //    return rotatedImage;
+        //}
 
-        BitmapImage BitmapToImageSource(Bitmap bitmap)
-        {
-            using (MemoryStream memory = new MemoryStream())
-            {
-                bitmap.Save(memory, System.Drawing.Imaging.ImageFormat.Bmp);
-                memory.Position = 0;
-                BitmapImage bitmapimage = new BitmapImage();
-                bitmapimage.BeginInit();
-                bitmapimage.StreamSource = memory;
-                bitmapimage.CacheOption = BitmapCacheOption.OnLoad;
-                bitmapimage.EndInit();
+        //BitmapImage BitmapToImageSource(Bitmap bitmap)
+        //{
+        //    using (MemoryStream memory = new MemoryStream())
+        //    {
+        //        bitmap.Save(memory, System.Drawing.Imaging.ImageFormat.Bmp);
+        //        memory.Position = 0;
+        //        BitmapImage bitmapimage = new BitmapImage();
+        //        bitmapimage.BeginInit();
+        //        bitmapimage.StreamSource = memory;
+        //        bitmapimage.CacheOption = BitmapCacheOption.OnLoad;
+        //        bitmapimage.EndInit();
 
-                return bitmapimage;
-            }
-        }
+        //        return bitmapimage;
+        //    }
+        //}
 
 
         private void UpdateFlight(BE.FlightInfoPartial selected)
@@ -205,22 +208,21 @@ namespace PL.Flights
                 addNewPolyLine(OrderedPlaces);
 
                 //code to rotate the plane
-                double angleForPlanePushPin = angleFromCoordinate(
-                    Flight.airport.destination.position.latitude,
-                    Flight.airport.destination.position.longitude,
-                    Flight.airport.origin.position.latitude,
-                    Flight.airport.origin.position.longitude);
+                //double angleForPlanePushPin = angleFromCoordinate(
+                //    Flight.airport.destination.position.latitude,
+                //    Flight.airport.destination.position.longitude,
+                //    Flight.airport.origin.position.latitude,
+                //    Flight.airport.origin.position.longitude);
 
-                float angle = (float)angleForPlanePushPin;
+                //float angle = (float)angleForPlanePushPin;
 
-                Bitmap iconRotated = RotateImage(new Bitmap("C:\\Users\\zeevm\\source\\repos\\FlightManager\\PL\\Images\\airplaneUpLeft.png"), angle);
+                //Bitmap iconRotated = RotateImage(new Bitmap("C:\\Users\\zeevm\\source\\repos\\FlightManager\\PL\\Images\\airplaneUpLeft.png"), angle);
                 //imgTest.Source = BitmapToImageSource(iconRotated);
                 //
 
                 BE.Trail CurrentPlace = null;
                 
                 
-
                 Pushpin PinCurrent = new Pushpin { ToolTip = selected.FlightCode };
                 Pushpin PinOrigin = new Pushpin { ToolTip = Flight.airport.origin.name };
                 
@@ -313,15 +315,10 @@ namespace PL.Flights
         private void GetDateHeb()
         {
             DateTime today = DateTime.Now;
-            dateheb.Text = "📆 " + today.ToString()+ "\n🗓 " + flightsViewModel.GetdateViewModel(today).ToString();
+            dateheb.Text = "📆 " + today.ToString()+ "\n🗓 " + flightsViewModel.GetDateViewModel(today).ToString();
         }
 
 
-        //private void myMap_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        //{
-        //    ViewAllFlights();
-
-        //}
 
         private void Pushpin_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
@@ -346,15 +343,34 @@ namespace PL.Flights
         {
             myMap.Children.Clear();
             FlightData.Visibility = Visibility.Hidden;
+            if (dispatcherTimer.IsEnabled)
+            {
+                
+                dispatcherTimer.Stop();
+                Counter.Text = "1";
+            }
             ViewAllFlights();
         }
 
         private void track_Click(object sender, RoutedEventArgs e)
         {
-            DispatcherTimer dispatcherTimer = new DispatcherTimer();
-            dispatcherTimer.Tick += DispatcherTimer_Tick;
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 15);
-            dispatcherTimer.Start();
+            if (dispatcherTimer.IsEnabled)
+            {
+                
+                dispatcherTimer.Stop();
+                Counter.Text = "1";
+                
+                track.Content = "▶️ Start Track";
+            }
+            else
+            {
+                
+                dispatcherTimer.Tick += DispatcherTimer_Tick;
+                dispatcherTimer.Interval = new TimeSpan(0, 0, 15);
+                dispatcherTimer.Start();
+                track.Content = "⏸️ Stop Track";
+            }
+            
         }
 
         private void DispatcherTimer_Tick(object sender, EventArgs e)
