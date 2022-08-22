@@ -29,7 +29,10 @@
                 <ResourceDictionary>
                 </ResourceDictionary>
             </UserControl.Resources>
-            
+            <UserControl.Background>
+                <ImageBrush ImageSource="/backgroudmain.jpg"/>
+            </UserControl.Background>
+
         </UserControl>
 
         <Grid Grid.Column="0" Background="#FFF0F7F9" >
